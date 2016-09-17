@@ -9,12 +9,10 @@
     display:inline-block;
     width:30%;
     text-align: left;
-    border: 1px solid lightgray;
     vertical-align: top;
 }
 
 #right-column {
-    border: 1px solid lightgray;
     display: inline-block;
     width:65%;
     text-align: left;

@@ -1,0 +1,76 @@
+/* RGB */
+$colorLight: rgba(255, 217, 218, 1);
+$colorPinkLight: rgba(234, 99, 140, 1);
+$colorPinkDark: rgba(137, 2, 62, 1);
+$colorDark: rgba(48, 52, 63, 1);
+$colorBlack: rgba(27, 32, 33, 1);
+
+@mixin transition($attribute, $time){
+    -webkit-transition: $attribute $time;
+    -moz-transition: $attribute $time;
+    transition: $attribute $time;
+}
+
+@mixin box-sizing($type){
+    -webkit-box-sizing: $type;
+    -moz-box-sizing: $type;
+    box-sizing: $type;
+}
+
+@mixin boxShadow() {
+    -webkit-box-shadow: 0px 8px 15px -5px rgba(71,71,71,0.5);
+    -moz-box-shadow: 0px 8px 15px -5px rgba(71,71,71,0.5);
+    box-shadow: 0px 8px 15px -5px rgba(71,71,71,0.5);
+}
+
+input {
+    @include box-sizing(border-box);
+    border: none;
+    border-bottom:1px solid $colorPinkLight;
+    line-height:1.5em;
+    // padding:10px;
+    font-size: 1.2em;
+    @include transition(border-bottom, 2s);
+    &:focus {
+        outline:none;
+        @include transition(border-bottom, 2s);
+        border-bottom:1px solid $colorPinkDark;
+    }
+}
+
+select {
+    @extend input;
+    border-radius: 0px;
+    outline:0;
+    background-color: white;
+    
+}
+
+button {
+    @extend input;
+    background-color: $colorPinkDark;
+    color:white;
+    padding-left: 15px;
+    padding-right: 15px;
+    &:active {
+        background-color:$colorPinkLight;
+    }
+}
+
+.solution {
+    // border: 1px solid gray;
+    padding: 20px 10px;
+    @include box-sizing(border-box);
+    @include boxShadow();
+    padding-bottom:20px;
+}
+
+.problem .description {
+    font-size:0.7em;
+    padding:5px;
+    @include box-sizing(border-box);
+    &:hover {
+        background-color: $colorPinkDark;
+        color:white;
+    }
+}
