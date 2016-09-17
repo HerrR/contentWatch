@@ -1,0 +1,10 @@
+{{ category.entry.categoryDesc }}
+<ul>
+  <li *ngFor="let problem of category.entry.problems">
+    <app-problem 
+        [uuid]="problem.uuid" 
+        [problemDesc]="problem.problemDesc" 
+        (onCategorySelect)="categorySelected($event)">
+    </app-problem>
+  </li>
+</ul>

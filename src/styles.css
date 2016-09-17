@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+.warning, .note, .important, .caution { 
+    padding: .25em 10px 1em 60px; 
+    background-color: #eee; 
+    background-position: 20px 20px; 
+    background-repeat: no-repeat; 
+    color: #444; 
+    margin-bottom: 1em; 
+    position: relative; 
+}
+
+.caution::before, .important::before, .warning::before, .note::before { 
+    content: ""; 
+    width:50px; 
+    background-color:rgba(0,0,0,0.07); 
+    background-repeat: no-repeat; 
+    background-position: 50% 20px; 
+    background-size: 50%; 
+    height:100%; 
+    display:block; 
+    position: absolute; 
+    left:0; 
+    top:0; }
+
+h3 { 
+    font-weight: 700; 
+}
+
+.mediaobject{ 
+    text-align: center; 
+}
+
+.mediaobject img{ 
+    max-width: 100%; 
+}
+
+.inlinemediaobject img {
+    height: 1.5em;
+    vertical-align: -.22em;
+    margin: 0 .25em;
+}
+.mediaobject {
+    text-align: center;
+}
+
+.mediaobject img {
+    max-width: 100%;
+}
