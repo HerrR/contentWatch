@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { navMainCategory } from '../../dataTypes/navData';
-
+import { QueryParams } from '../../dataTypes/queryParams';
 
 @Component({
   selector: 'app-main-category',
@@ -11,17 +11,15 @@ import { navMainCategory } from '../../dataTypes/navData';
 export class MainCategoryComponent implements OnInit {
   @Input() category: navMainCategory;
   @Input() activeCategoryUUID: string;
- // @Input() selectedCategory: string;
+  @Input() mostRecentQuery: QueryParams;
+
   @Output() onCategorySelect = new EventEmitter<string[]>();
 
   constructor() {  }
 
   categorySelected(event){
-    console.log("Recieved event in main-category component: ",event);
     this.onCategorySelect.emit(event);
   }
 
-  ngOnInit() {
-    // console.log(this.category);
-  }
+  ngOnInit() { }
 }

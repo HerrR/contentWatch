@@ -4,6 +4,10 @@ export class solutionData {
     ) {
         this.data = data;
     }
+
+    public resetData() {
+        this.data = Array<solution>();
+    }
 }
 class solution {
     constructor(
@@ -23,5 +27,9 @@ export class solutionDataWithProblemID {
     ) {
         this.data = data;
         this.problemID = problemID;
+    }
+
+    public resetData(){
+        this.data = new Array<solutionData>();
     }
 }

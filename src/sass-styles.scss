@@ -75,6 +75,9 @@ $wrapperWidth: 90%;
 
 #header {
     @include boxShadow();
+    input {
+        width:10%;
+    }
 }
 
 input {
