@@ -16,6 +16,7 @@
       "mobile": false,
       "styles": [
         "styles.css",
+        "../node_modules/normalize.css/normalize.css",
         "sass-styles.scss"
       ],
       "scripts": [],

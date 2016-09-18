@@ -1,4 +1,6 @@
-<div *ngFor="let solution of solutions" class="solution">
-    {{ solution.title }}
+<div *ngFor="let solution of solutions?.data" class="solution">
     <app-solution [uri]="solution.uri"></app-solution>
+    <div class="solution-id">
+        {{ solution.title }}
+    </div>
 </div>

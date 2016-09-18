@@ -14,3 +14,14 @@ class solution {
         this.uri = uri;
     }
 }
+
+export class solutionDataWithProblemID {
+    constructor(
+        public data: solutionData[],     
+        public problemID: string
+
+    ) {
+        this.data = data;
+        this.problemID = problemID;
+    }
+}

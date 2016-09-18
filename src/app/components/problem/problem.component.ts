@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ContentService } from '../../services/content-service.service';
-import { solutionData } from '../../dataTypes/solutionData';
+import { solutionData, solutionDataWithProblemID } from '../../dataTypes/solutionData';
 
 @Component({
   selector: 'app-problem',
@@ -11,21 +11,38 @@ import { solutionData } from '../../dataTypes/solutionData';
 export class ProblemComponent implements OnInit {
   @Input() uuid: string;
   @Input() problemDesc: string;
-  @Output() onCategorySelect = new EventEmitter<string[]>();
-  
-  solutions: string[];
+  @Input() activeCategoryUUID: string;
+
+  @Output() onCategorySelect = new EventEmitter<solutionDataWithProblemID>();
+  @Output() activeCategory = new EventEmitter<string>();
+
+  solutions: solutionData[];
 
   constructor(private contentEngineService: ContentService) {
   }
+
+  isActive() {
+    if(this.activeCategoryUUID == this.uuid) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   
   onClick(){
-    console.log("Emitting click event from problem component!", this.solutions);
-    this.onCategorySelect.emit(this.solutions);
+    var solution = new solutionDataWithProblemID(this.solutions, this.uuid);
+    console.log("Emitting click event from problem component!", solution);
+    this.onCategorySelect.emit(solution);
+
+
+    // this.onCategorySelect.emit(this.solutions);
+    //this.activeCategory.emit(this.uuid);
   }
 
   ngOnInit() {
+
     this.contentEngineService.getSolutions(this.uuid).subscribe(
-      (data:string[]) => {this.solutions = data}
+      (data:solutionData[]) => {this.solutions = data}
     );
   }
 

@@ -1,11 +1,10 @@
-{{ category.entry.categoryDesc }}
-<ul>
-  <li *ngFor="let problem of category.entry.problems">
-    <app-problem 
-        [uuid]="problem.uuid" 
-        [problemDesc]="problem.problemDesc" 
-        (onCategorySelect)="categorySelected($event)"
-        class="problem">
-    </app-problem>
-  </li>
-</ul>
+<div class="categoryName background-purple">{{ category.entry.categoryDesc }}</div>
+<div *ngFor="let problem of category.entry.problems">
+  <app-problem 
+      [uuid]="problem.uuid" 
+      [problemDesc]="problem.problemDesc"
+      [activeCategoryUUID]="activeCategoryUUID"
+      (onCategorySelect)="categorySelected($event)"
+      class="problem">
+  </app-problem>
+</div>

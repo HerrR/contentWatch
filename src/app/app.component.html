@@ -1,13 +1,13 @@
 <app-header></app-header>
 <div id="wrapper">
   <div id="left-column">
-    <ul>
-      <li *ngFor="let category of categories">
-        <app-main-category 
-            [category]=category 
-            (onCategorySelect)="categorySelected($event)"></app-main-category>
-      </li>
-    </ul>
+    <div *ngFor="let category of categories" class="category">
+      <app-main-category 
+          [category]=category 
+          [activeCategoryUUID]="solutions?.problemID"
+          (onCategorySelect)="categorySelected($event)">
+      </app-main-category>
+    </div>
   </div>
   <div id="right-column">
     <app-solutions-view [solutions]="solutions"></app-solutions-view>

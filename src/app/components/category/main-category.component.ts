@@ -9,7 +9,9 @@ import { navMainCategory } from '../../dataTypes/navData';
 })
 
 export class MainCategoryComponent implements OnInit {
-  @Input() category: navMainCategory; 
+  @Input() category: navMainCategory;
+  @Input() activeCategoryUUID: string;
+ // @Input() selectedCategory: string;
   @Output() onCategorySelect = new EventEmitter<string[]>();
 
   constructor() {  }
@@ -22,5 +24,4 @@ export class MainCategoryComponent implements OnInit {
   ngOnInit() {
     // console.log(this.category);
   }
-
 }

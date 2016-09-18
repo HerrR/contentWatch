@@ -32,7 +32,7 @@ export class ContentService {
                 .map((r: Response) => r.json().data as navEntries[]);
   }
 
-  getSolutions(problemID: string): Observable<string[]>{
+  getSolutions(problemID: string): Observable<solutionData[]>{
     var queryType:string = "solutions/";
     const headers = new Headers();
     headers.append('x-guid', 'halebop-test#eu-west-1:8138c478-b446-4566-b7e1-b4507c05ecf1');
@@ -42,7 +42,7 @@ export class ContentService {
 
     return this.http
                 .get(this.contentEngineUrl+queryType+problemID, {headers: headers})
-                .map((r: Response) => r.json().data as string[]);
+                .map((r: Response) => r.json().data as solutionData[]);
   }
 
   getSolutionHTML(uri: string): Observable<string>{

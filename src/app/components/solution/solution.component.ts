@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { ContentService } from '../../services/content-service.service';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-solution',
@@ -13,8 +12,7 @@ export class SolutionComponent implements OnInit {
   @ViewChild('dataContainer') dataContainer: ElementRef;
 
   constructor(
-    private contentEngineService: ContentService, 
-    private _DomSanitizer: DomSanitizer
+    private contentEngineService: ContentService
   ) { }
 
   ngOnInit() {

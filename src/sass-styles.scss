@@ -4,6 +4,8 @@ $colorPinkLight: rgba(234, 99, 140, 1);
 $colorPinkDark: rgba(137, 2, 62, 1);
 $colorDark: rgba(48, 52, 63, 1);
 $colorBlack: rgba(27, 32, 33, 1);
+$colorPurpleDark: #39002f;
+$wrapperWidth: 90%;
 
 @mixin transition($attribute, $time){
     -webkit-transition: $attribute $time;
@@ -23,11 +25,66 @@ $colorBlack: rgba(27, 32, 33, 1);
     box-shadow: 0px 8px 15px -5px rgba(71,71,71,0.5);
 }
 
+#wrapper {
+    width: $wrapperWidth;
+    display:block;
+    margin:auto;
+    text-align: center;
+    margin-bottom:30px;
+}
+
+#left-column {
+    display:inline-block;
+    width:25%;
+    text-align: left;
+    vertical-align: top;
+    margin-right:3%;
+    @include boxShadow();
+}
+
+#right-column {
+    display: inline-block;
+    width:70%;
+    text-align: left;
+    vertical-align: top;
+
+}
+
+.category {
+    margin-bottom:20px;
+}
+
+#header #logoContainer {
+    /* text-align: left;
+    width: 23%;
+    padding-left:(100%-$wrapperWidth)/2;
+    @include box-sizing(border-box);
+    vertical-align: bottom;
+    display: inline-block;*/
+    text-align:center;
+    margin-bottom:25px;
+    margin-top:20px;
+    img {
+        height:100px;
+    }
+}
+
+#searchOptions {
+    text-align: center;
+}
+
+#header {
+    @include boxShadow();
+}
+
 input {
     @include box-sizing(border-box);
     border: none;
     border-bottom:1px solid $colorPinkLight;
     line-height:1.5em;
+    display: inline-block;
+    vertical-align: bottom;
+    margin:0px 10px;
     // padding:10px;
     font-size: 1.2em;
     @include transition(border-bottom, 2s);
@@ -50,8 +107,9 @@ button {
     @extend input;
     background-color: $colorPinkDark;
     color:white;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding:10px 20px;
+    // margin:0px 10px;
+    cursor:pointer;
     &:active {
         background-color:$colorPinkLight;
     }
@@ -59,18 +117,29 @@ button {
 
 .solution {
     // border: 1px solid gray;
-    padding: 20px 10px;
+    padding: 20px 20px;
     @include box-sizing(border-box);
     @include boxShadow();
-    padding-bottom:20px;
+    border-left: 3px solid $colorPurpleDark;
+    margin-bottom:20px;
 }
 
 .problem .description {
     font-size:0.7em;
-    padding:5px;
+    padding:5px 20px;
     @include box-sizing(border-box);
     &:hover {
         background-color: $colorPinkDark;
         color:white;
     }
+}
+
+.background-purple {
+    background-color: $colorPurpleDark;
+    color:white;
+}
+
+.selectedProblem {
+    background-color:$colorPinkDark;
+    color:white;
 }
