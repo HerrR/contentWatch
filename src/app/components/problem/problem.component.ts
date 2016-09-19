@@ -27,13 +27,16 @@ export class ProblemComponent implements OnInit {
   }
   
   onClick(){
-    var solution = new solutionDataWithProblemID(this.solutions, this.uuid);
-    this.onCategorySelect.emit(solution);
+    var solutions = new solutionDataWithProblemID(this.solutions, this.uuid);
+    this.onCategorySelect.emit(solutions);
   }
 
   ngOnInit() {
     this.contentEngineService.getSolutions(this.uuid, this.mostRecentQuery).subscribe(
-      (data:solutionData[]) => {this.solutions = data}
+      (data:solutionData[]) => {
+        // console.log(data);
+        this.solutions = data;
+      }
     );
   }
 

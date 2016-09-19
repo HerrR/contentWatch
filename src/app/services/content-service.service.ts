@@ -14,10 +14,9 @@ export class ContentService {
     private http: Http
   ) {}
   
-  private contentEngineUrl:string[] = ["http://1-0-contentengine-mi-","-ebuilder.eu-west-1.elasticbeanstalk.com/v2/contentengine/"];
-
   buildEngineURL(env:string){
-    return this.contentEngineUrl[0]+env+this.contentEngineUrl[1];
+    let optionalDash = (env == "dev") ? "-" : "";
+    return `http://1-0-content${ optionalDash }engine-mi-${ env }-ebuilder.eu-west-1.elasticbeanstalk.com/v2/contentengine/`;
   }
 
   getNavigation(params): Observable<navEntries[]> {
@@ -28,9 +27,10 @@ export class ContentService {
                       'X-Requested-With': 'com.teliasonera.deviceselfservice.telia',
                       'x-api-key': 'Nqd1RbJkW1hoAlPu9xTcP2Vd5Ceg5AIy',*/
      
-      var queryString:string = 'navigation?query={"tags":{"lang":["'+params.lang+'"],"category":["'+params.category+'"],"model":["'+params.model+'"],"os":["'+params.os+'"]}}';
-      console.log("Query: "+this.buildEngineURL(params.env)+queryString);
-      console.log("Headers: ", headers);
+      // console.log("Query: "+this.buildEngineURL(params.env)+queryString);
+      // console.log("Headers: ", headers);
+
+      let queryString:string = `navigation?query={"tags":{"lang":["${params.lang}"],"category":["${params.category}"],"model":["${params.model}"],"os":["${params.os}"]},"params":{"page":0}}`;
 
       return this.http
                   .get(this.buildEngineURL(params.env)+queryString, {headers: headers})
@@ -38,11 +38,10 @@ export class ContentService {
   }
 
   getSolutions(problemID: string, previousQueryParams: QueryParams): Observable<solutionData[]>{
-    var queryType:string = "solutions/";
+    let queryType:string = "solutions/";
     const headers = new Headers();
     headers.append('x-guid', previousQueryParams.tenant+'-'+previousQueryParams.env+'#eu-west-1:8138c478-b446-4566-b7e1-b4507c05ecf1');
     headers.append('x-channel-name', previousQueryParams.tenant+'-Android');
-    
 
     return this.http
                 .get(this.buildEngineURL(previousQueryParams.env)+queryType+problemID, {headers: headers})
@@ -50,7 +49,8 @@ export class ContentService {
   }
 
   getSolutionHTML(uri: string): Observable<string>{
-    var baseURL: string = "https://s3-eu-west-1.amazonaws.com/content-int-test.ebuilder.io";
+    let baseURL: string = "https://s3-eu-west-1.amazonaws.com/content-int-test.ebuilder.io";
+
     return this.http
                 .get(baseURL+uri)
                 .map((r: Response) => r.text() as string);

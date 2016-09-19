@@ -16,6 +16,7 @@ export class AppComponent {
   solutions: solutionDataWithProblemID;
   responseData: navEntries;
   mostRecentQuery: QueryParams;
+  numSolutionsDisplayed: number;
 
   constructor(
     private contentEngineService: ContentService
@@ -34,6 +35,10 @@ export class AppComponent {
 
   onCategoryData(data :navEntries) { 
     this.categories = data;
+  }
+
+  displayAll(){
+
   }
 
   categorySelected(solutions){

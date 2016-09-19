@@ -146,3 +146,14 @@ button {
     background-color:$colorPinkDark;
     color:white;
 }
+
+.divider {
+    border-color: $colorPurpleDark;    
+}
+
+#filterSolutions {
+    display:block;
+    text-align: center;
+    margin:auto;
+    width:50%;
+}
