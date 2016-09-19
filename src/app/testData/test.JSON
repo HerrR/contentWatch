@@ -1,0 +1,96 @@
+{
+  "env": {
+    "dev": {
+      "ce": "http://1-0-content-engine-mi-dev-ebuilder.eu-west-1.elasticbeanstalk.com/",
+      "s3": "https://s3-eu-west-1.amazonaws.com/content-int-dev.ebuilder.io/v1_10/"
+    },
+    "test": { 
+      "ce": "http://1-0-contentengine-mi-test-ebuilder.eu-west-1.elasticbeanstalk.com/",
+      "s3": "https://s3-eu-west-1.amazonaws.com/content-int-test.ebuilder.io/v1_10/"
+     },
+    "prod": { 
+      "ce": "http://skutt-contentengine-mi-prod-ebuilder.eu-west-1.elasticbeanstalk.com/",
+      "s3": "https://s3-eu-west-1.amazonaws.com/content-int.ebuilder.io/v1_10/"
+     }
+  },
+  "category": {
+    "iphone": "iPhone",
+    "generic": "Generic",
+    "galaxy": "Galaxy",
+    "xperia": "Xperia"
+  },
+  "model": {
+    "iphone": {
+      "default": "Default",
+      "iphone4s": "iPhone 4s",
+      "iphone5": "iPhone 5",
+      "iphone5c": "iPhone 5c",
+      "iphone5s": "iPhone 5s",
+      "iphone6": "iPhone 6",
+      "iphone6plus": "iPhone 6 Plus",
+      "iphone6s": "iPhone 6s",
+      "iphone6splus": "iPhone 6s Plus",
+      "iphone7": "iPhone 7",
+      "iphone7plus": "iPhone Plus",
+      "iphonese": "iPhone SE"
+    },
+    "galaxy": {
+      "default": "Default",
+      "galaxya3": "Galaxy A3",
+      "galaxya5": "Galaxy A5",
+      "galaxyalpha": "Galaxy ALPHA",
+      "galaxycoreprime": "Galaxy Core Prime",
+      "galaxycoreprimeve": "Galaxy Core Prime VE",
+      "galaxyj5": "Galaxy J5",
+      "galaxynote3": "Galaxy Note 3",
+      "galaxynote4": "Galaxy Note 4",
+      "galaxynoteedge": "Galaxy Edge",
+      "galaxys4": "Galaxy S4",
+      "galaxys4active": "Galaxy S4 Active",
+      "galaxys4mini": "Galaxy S4 Mini",
+      "galaxys4with4g": "Galaxy With 4G",
+      "galaxys5": "Galaxy S5",
+      "galaxys54g": "Galaxy S5 4G",
+      "galaxys5active": "Galaxy Active",
+      "galaxys5mini": "Galaxy Mini",
+      "galaxys5neo": "Galaxy Neo",
+      "galaxys6": "Galaxy S6",
+      "galaxys6edge": "Galaxy S6 Edge",
+      "galaxys6edgeplus": "Galaxy S6 Edge Plus",
+      "galaxys7": "Galaxy S7",
+      "galaxys7edge": "Galaxy S7 Edge",
+      "galaxyxcover3": "Galaxy Xcover 3"
+    },
+    "xperia": {
+      "default": "Default",
+      "x": "Xperia X",
+      "z": "Xperia Z",
+      "zultra": "Xperia Z Ultra",
+      "z1": "Xperia Z1",
+      "z1compact": "Xperia Z1 Compact",
+      "z3": "Xperia Z3",
+      "z3compact": "Xperia Z3 Compact",
+      "z3plus": "Xperia Z3 Plus",
+      "z5": "Xperia Z5",
+      "z5compact": "Xperia Z5 Compact",
+      "z5premium": "Xperia Z5 Premium",
+      "zl": "Xperia ZL",
+      "zr": "Xperia ZR"
+    },
+    "generic": {
+      "Android": "Android"
+    }
+  },
+  "os":{
+    "iphone": {
+      "8": true,
+      "9": true,
+      "10": true
+    },
+    "android": {
+      "5": true,
+      "6": true,
+      "7": true
+    }
+  }
+}
