@@ -1,11 +1,17 @@
-<app-header></app-header>
+<app-header
+    (searchEvent)="onSearchEvent($event)"
+>
+</app-header>
 <div id="wrapper">
   <div id="left-column">
+        {{ items | async | json }}
     <div *ngFor="let category of categories" class="category">
       <app-main-category 
           [category]=category 
           [activeCategoryUUID]="solutions?.problemID"
-          (onCategorySelect)="categorySelected($event)">
+          [mostRecentQuery]="mostRecentQuery"
+          (onCategorySelect)="categorySelected($event)"
+          >
       </app-main-category>
     </div>
   </div>

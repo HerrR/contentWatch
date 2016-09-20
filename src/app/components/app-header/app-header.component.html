@@ -2,14 +2,13 @@
   <div id="logoContainer">
     <img src="app/images/CW-Small.png" alt="Logo">
   </div>
-  <div id="searchOptions">
-    <input type="text" placeholder="Input text"/>
-    <select>
-      <option value="op1">Option 1</option>
-      <option value="op2">Option 2</option>
-      <option value="op3">Option 3</option>
-    </select>
-
-    <button>Search</button>
-  </div>
+  <form id="searchOptions" (ngSubmit)="onSubmit()">
+    <input type="text" [(ngModel)]="queryTerms.env" name="env">
+    <input type="text" [(ngModel)]="queryTerms.tenant" name="tenant">
+    <input type="text" [(ngModel)]="queryTerms.lang" name="lang">
+    <input type="text" [(ngModel)]="queryTerms.category" name="market">
+    <input type="text" [(ngModel)]="queryTerms.model" name="model">
+    <input type="text" [(ngModel)]="queryTerms.os" name="os">
+    <button type="submit">Search</button>
+  </form>
 </div>

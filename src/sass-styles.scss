@@ -75,6 +75,9 @@ $wrapperWidth: 90%;
 
 #header {
     @include boxShadow();
+    input {
+        width:10%;
+    }
 }
 
 input {
@@ -142,4 +145,15 @@ button {
 .selectedProblem {
     background-color:$colorPinkDark;
     color:white;
+}
+
+.divider {
+    border-color: $colorPurpleDark;    
+}
+
+#filterSolutions {
+    display:block;
+    text-align: center;
+    margin:auto;
+    width:50%;
 }

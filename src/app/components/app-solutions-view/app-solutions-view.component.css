@@ -3,3 +3,13 @@
     color: #dadada;
     font-size: 0.8em;
 }
+
+.displayInfo {
+    margin-bottom:20px;
+    padding:20px;
+    text-align: center;
+}
+
+.numSolutionsDisplay {
+    margin-bottom:20px;
+}

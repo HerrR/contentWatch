@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ContentService } from './services/content-service.service';
 import { navEntries } from './dataTypes/navData';
 import { solutionData, solutionDataWithProblemID } from './dataTypes/solutionData';
+import { QueryParams } from './dataTypes/queryParams';
+import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-root',
@@ -13,30 +15,42 @@ import { solutionData, solutionDataWithProblemID } from './dataTypes/solutionDat
 export class AppComponent {
   categories: navEntries;
   solutions: solutionDataWithProblemID;
+  responseData: navEntries;
+  mostRecentQuery: QueryParams;
+  items: FirebaseObjectObservable<any[]>;
+  numSolutionsDisplayed: number;
+  //refs/remotes/origin/custom-search
 
   constructor(
-    private contentEngineService: ContentService
-  ){}
-
-  responseData: navEntries;
-
-  onCategoryData(data :navEntries) { 
-    this.categories = data;
+    private contentEngineService: ContentService,
+    af: AngularFire
+  ){
+    this.items = af.database.object('/');
   }
 
-  categorySelected(solutions){
-    console.log("Top level component with solutions", solutions);
-    this.solutions = solutions;
-    console.log(this.solutions);
-  }
-
-  ngOnInit() {
-    console.log(this.solutions);
-    this.contentEngineService.getNavigation('{"tags":{"lang":["en"],"category":["iphone"],"model":["iphone6s"],"os":["9"]}}')
+  onSearchEvent(queryParams){
+    this.solutions = undefined;
+    this.categories = undefined;
+    this.mostRecentQuery = queryParams;
+    this.contentEngineService.getNavigation(queryParams)
       .subscribe(
         (data: any) => this.onCategoryData(data)
       );
   }
 
+  onCategoryData(data :navEntries) { 
+    this.categories = data;
+  }
 
+  displayAll(){
+
+  }
+
+  categorySelected(solutions){
+    this.solutions = solutions;
+  }
+
+  ngOnInit() {
+
+  }
 }
