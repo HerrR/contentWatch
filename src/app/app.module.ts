@@ -11,6 +11,7 @@ import { ProblemComponent } from './components/problem/problem.component';
 import { SolutionComponent } from './components/solution/solution.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { AppSolutionsViewComponent } from './components/app-solutions-view/app-solutions-view.component';
+import { StringFilterPipe } from './pipes/string-filter.pipe';
 
 //Firebase Configuration contant
 export const firebaseConfig = {
@@ -28,7 +29,8 @@ export const firebaseConfig = {
     ProblemComponent,
     SolutionComponent,
     AppHeaderComponent,
-    AppSolutionsViewComponent
+    AppSolutionsViewComponent,
+    StringFilterPipe
   ],
   imports: [
     BrowserModule,

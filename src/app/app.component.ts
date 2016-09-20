@@ -18,6 +18,8 @@ export class AppComponent {
   responseData: navEntries;
   mostRecentQuery: QueryParams;
   items: FirebaseObjectObservable<any[]>;
+  numSolutionsDisplayed: number;
+  //refs/remotes/origin/custom-search
 
   constructor(
     private contentEngineService: ContentService,
@@ -38,6 +40,10 @@ export class AppComponent {
 
   onCategoryData(data :navEntries) { 
     this.categories = data;
+  }
+
+  displayAll(){
+
   }
 
   categorySelected(solutions){

@@ -1,5 +1,13 @@
-<div *ngFor="let solution of solutions?.data" class="solution">
-    <app-solution [uri]="solution.uri"></app-solution>
+<div class="displayInfo" *ngIf="solutionsFetched()">
+    <div class="numSolutionsDisplay">Displaying {{ solutionCounter.displayedSolutions }} of {{ solutions?.data.length }} solutions </div>
+    <input id="filterSolutions" 
+        type="text" 
+        placeholder="Search in solutions" 
+        [(ngModel)]="solutionSearchQuery" 
+        name="solutionSearchQuery"/>
+</div>
+<div *ngFor="let solution of solutions?.data | stringFilter : [solutionSearchQuery, solutionCounter]" class="solution" #someVar>
+    <app-solution [solution]="solution"></app-solution>
     <div class="solution-id">
         {{ solution.title }}
     </div>

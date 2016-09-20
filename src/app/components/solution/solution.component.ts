@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import { ContentService } from '../../services/content-service.service';
+import { Solution } from '../../dataTypes/solutionData';
 
 @Component({
   selector: 'app-solution',
@@ -8,7 +9,7 @@ import { ContentService } from '../../services/content-service.service';
   providers: [ContentService]
 })
 export class SolutionComponent implements OnInit {
-  @Input() uri: string;
+  @Input() solution: Solution;
   @ViewChild('dataContainer') dataContainer: ElementRef;
 
   constructor(
@@ -17,11 +18,12 @@ export class SolutionComponent implements OnInit {
 
   ngOnInit() {
     this.dataContainer.nativeElement.innerHTML = "Loading...";
-    this.contentEngineService.getSolutionHTML(this.uri).subscribe(
+    this.contentEngineService.getSolutionHTML(this.solution.uri).subscribe(
       (data:string) => {
         this.dataContainer.nativeElement.innerHTML = data;
+        // Remove tags and multiple spaces / tabs / indents
+        this.solution.contentText = data.replace(/<\/?[^>]+(>|$)/g,"").replace(/\s\s+/g, ' ');
       }
     )
   }
-
 }
