@@ -3,7 +3,7 @@ import { ContentService } from './services/content-service.service';
 import { navEntries } from './dataTypes/navData';
 import { solutionData, solutionDataWithProblemID } from './dataTypes/solutionData';
 import { QueryParams } from './dataTypes/queryParams';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-root',
@@ -17,13 +17,13 @@ export class AppComponent {
   solutions: solutionDataWithProblemID;
   responseData: navEntries;
   mostRecentQuery: QueryParams;
-  items: FirebaseListObservable<any[]>;
+  items: FirebaseObjectObservable<any[]>;
 
   constructor(
     private contentEngineService: ContentService,
     af: AngularFire
   ){
-    af.database.list('category').subscribe(items => console.log(items));
+    this.items = af.database.object('/');
   }
 
   onSearchEvent(queryParams){

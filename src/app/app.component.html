@@ -4,11 +4,7 @@
 </app-header>
 <div id="wrapper">
   <div id="left-column">
-    <ul>
-      <li *ngFor="let item of items | async">
-        {{ item.name }}
-      </li>
-    </ul>
+        {{ items | async | json }}
     <div *ngFor="let category of categories" class="category">
       <app-main-category 
           [category]=category 
