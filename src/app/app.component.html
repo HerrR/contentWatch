@@ -1,10 +1,11 @@
-<app-header
-    (searchEvent)="onSearchEvent($event)"
->
+<app-header (searchEvent)="onSearchEvent($event)">
 </app-header>
+
+<app-input (searchEvent)="onSearchEvent($event)">
+  LOADING INPUT HERRRRE!
+</app-input >
 <div id="wrapper">
   <div id="left-column">
-        {{ items | async | json }}
     <div *ngFor="let category of categories" class="category">
       <app-main-category 
           [category]=category 

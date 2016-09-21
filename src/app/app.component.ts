@@ -3,7 +3,6 @@ import { ContentService } from './services/content-service.service';
 import { navEntries } from './dataTypes/navData';
 import { solutionData, solutionDataWithProblemID } from './dataTypes/solutionData';
 import { QueryParams } from './dataTypes/queryParams';
-import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-root',
@@ -17,15 +16,12 @@ export class AppComponent {
   solutions: solutionDataWithProblemID;
   responseData: navEntries;
   mostRecentQuery: QueryParams;
-  items: FirebaseObjectObservable<any[]>;
   numSolutionsDisplayed: number;
   //refs/remotes/origin/custom-search
 
   constructor(
-    private contentEngineService: ContentService,
-    af: AngularFire
+    private contentEngineService: ContentService
   ){
-    this.items = af.database.object('/');
   }
 
   onSearchEvent(queryParams){

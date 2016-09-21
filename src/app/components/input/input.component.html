@@ -1,0 +1,20 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="inputForm">
+  <input type="radio" formControlName="env" *ngFor="let e of env | async" [value]="e.$key">
+  <select formControlName="tenant">
+    <option *ngFor="let t of tenant | async" [value]="t.$value">{{t.$key}}</option>
+  </select>
+  <select formControlName="lang">
+    <option *ngFor="let l of lang | async" [value]="l.$key">{{l.$value}}</option>
+  </select>
+  <select formControlName="category">
+    <option *ngFor="let c of category | async" [value]="c.$key">{{c.name}}</option>
+  </select>
+  <select formControlName="model">
+    <option *ngFor="let m of model | async" [value]="m.$key">{{m.$value}}</option>
+  </select>
+  <select formControlName="os">
+    <option *ngFor="let o of os | async" [value]="o.$key">{{o.$key}}</option>
+  </select>
+  <button type="submit">SUBMIT</button>
+  <p>{{ inputForm.value | json }}</p>
+</form>

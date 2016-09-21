@@ -14,10 +14,22 @@
      }
   },
   "category": {
-    "iphone": "iPhone",
-    "generic": "Generic",
-    "galaxy": "Galaxy",
-    "xperia": "Xperia"
+    "iphone": {
+      "name": "iPhone",
+      "ostype": "iphone"
+    },
+    "generic": {
+      "name": "Generic",
+      "ostype": "Android"
+    },
+    "galaxy": {
+      "name": "Galaxy",
+      "ostype": "Android"
+    },
+    "xperia": {
+      "name": "Xperia",
+      "ostype": "Android"
+    }
   },
   "model": {
     "iphone": {
@@ -91,6 +103,24 @@
       "5": true,
       "6": true,
       "7": true
+    }
+  },
+  "lang":{
+    "en": "English",
+    "sv": "Swedish"
+    },
+  "tenant":{
+    "dev":{
+      "Telia": "teliaidaidev",
+      "Halebop": "halebopidaidev"
+    },
+    "test":{
+      "Telia": "teliaidaitest",
+      "Halebop": "halebopidaitest" 
+    },
+    "prod":{
+      "Telia": "telia",
+      "Halebop": "halebop"
     }
   }
 }
