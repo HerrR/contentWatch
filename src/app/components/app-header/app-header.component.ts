@@ -16,6 +16,7 @@ export class AppHeaderComponent implements OnInit {
 
   onSubmit(){
     this.searchEvent.emit(this.queryTerms);
+    console.log(this.queryTerms);
   }
 
   ngOnInit() {

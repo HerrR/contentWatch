@@ -99,10 +99,20 @@
       "9": true,
       "10": true
     },
-    "android": {
+    "galaxy": {
       "5": true,
       "6": true,
       "7": true
+    },
+    "generic": {
+      "5": true,
+      "6": true,
+      "7": true
+    },
+    "xperia": {
+      "5": true,
+      "6": true,
+      "7": true      
     }
   },
   "lang":{

@@ -3,6 +3,8 @@ import { FormGroup, FormControl, FormBuilder, Validators, FormArray, ReactiveFor
 import { AngularFire, FirebaseListObservable,FirebaseObjectObservable } from 'angularfire2';
 import 'rxjs/add/operator/map'; //TODO: move to root level
 
+import { QueryParams } from '../../dataTypes/queryParams';
+
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
@@ -53,13 +55,26 @@ export class InputComponent implements OnInit {
    updateData(){
      this.model = this.af.database.list('/model/'+this.inputForm.value.category);
      this.tenant = this.af.database.list('/tenant/'+this.inputForm.value.env);
+     this.os = this.af.database.list('/os/'+this.inputForm.value.category);
    }
 
   @Output() searchEvent = new EventEmitter<any>();
 
   ngOnInit() {}
+  queryTerms: QueryParams = new QueryParams("test", "halebop", "en", "iphone", "iphone6", "9");
+
   onSubmit() {
+//feels unneccessary to convert inputForm to queryTerms
+    this.queryTerms.env = this.inputForm.value.env;
+    this.queryTerms.tenant = this.inputForm.value.tenant;
+    this.queryTerms.lang = this.inputForm.value.lang;
+    this.queryTerms.category = this.inputForm.value.category;
+    this.queryTerms.model = this.inputForm.value.model;
+    this.queryTerms.os = this.inputForm.value.os;
+
     console.log(this.inputForm.value);
+    console.log(this.queryTerms);
+
     this.searchEvent.emit(this.inputForm.value);
   }
 }
