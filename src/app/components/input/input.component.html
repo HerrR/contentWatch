@@ -1,5 +1,12 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="inputForm">
-  <input type="radio" formControlName="env" *ngFor="let e of env | async" [value]="e.$key">
+  <!--
+  <label *ngFor="let e of env | async">
+    <input type="radio" formControlName="env" [value]="e.$key">{{e.$key}}
+  </label>
+  -->
+  <select formControlName="env">
+    <option *ngFor="let e of env | async" [value]="e.$key">{{e.$key}}</option>
+  </select>
   <select formControlName="tenant">
     <option *ngFor="let t of tenant | async" [value]="t.$value">{{t.$key}}</option>
   </select>
@@ -15,6 +22,5 @@
   <select formControlName="os">
     <option *ngFor="let o of os | async" [value]="o.$key">{{o.$key}}</option>
   </select>
-  <button type="submit">SUBMIT</button>
-  <p>{{ inputForm.value | json }}</p>
+  <button type="submit">WATCH</button>
 </form>
