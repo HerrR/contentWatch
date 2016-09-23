@@ -14,45 +14,44 @@ export class ContentService {
     private http: Http
   ) {}
   
-  buildEngineURL(env:string){
-    let optionalDash = (env == "dev") ? "-" : "";
-    return `http://1-0-content${ optionalDash }engine-mi-${ env }-ebuilder.eu-west-1.elasticbeanstalk.com/v2/contentengine/`;
+  buildEngineURL(env:Object){
+    //let optionalDash = (env == "dev") ? "-" : "";
+    //return `http://1-0-content${ optionalDash }engine-mi-${ env }-ebuilder.eu-west-1.elasticbeanstalk.com/v2/contentengine/`;
   }
 
   getNavigation(params): Observable<navEntries[]> {
       const headers = new Headers();
-      headers.append('x-guid', params.tenant+'-'+params.env+'#eu-west-1:8138c478-b446-4566-b7e1-b4507c05ecf1');
-      headers.append('x-channel-name', params.tenant+'-Android');
+      //headers.append('x-guid', 'telia'+'-'+'test'+'#eu-west-1:8138c478-b446-4566-b7e1-b4507c05ecf1');
+      headers.append('x-guid', 'halebop#eu-west-1:8138c478-b446-4566-b7e1-b4507c05ecf1');
+      headers.append('x-channel-name', 'halebop-Android');
                       /*,
                       'X-Requested-With': 'com.teliasonera.deviceselfservice.telia',
                       'x-api-key': 'Nqd1RbJkW1hoAlPu9xTcP2Vd5Ceg5AIy',*/
-     
-      // console.log("Query: "+this.buildEngineURL(params.env)+queryString);
-      // console.log("Headers: ", headers);
 
-      let queryString:string = `navigation?query={"tags":{"lang":["${params.lang}"],"category":["${params.category}"],"model":["${params.model}"],"os":["${params.os}"]},"params":{"page":0}}`;
-
+      let queryString:string = `navigation?query={"tags":{"tenant":["${params.tenant}"],"lang":["${params.lang}"],"category":["${params.category}"],"model":["${params.model}"],"os":["${params.os}"]},"params":{"page":0}}`;
+      
       return this.http
-                  .get(this.buildEngineURL(params.env)+queryString, {headers: headers})
+                  .get(params.env['ce']+'v2/contentengine/'+queryString, {headers: headers})
                   .map((r: Response) => r.json().data as navEntries[]);
   }
 
-  getSolutions(problemID: string, previousQueryParams: QueryParams): Observable<solutionData[]>{
+  getSolutions(problemID: string, previousQueryParams: QueryParams): Observable<solutionData>{
     let queryType:string = "solutions/";
     const headers = new Headers();
-    headers.append('x-guid', previousQueryParams.tenant+'-'+previousQueryParams.env+'#eu-west-1:8138c478-b446-4566-b7e1-b4507c05ecf1');
-    headers.append('x-channel-name', previousQueryParams.tenant+'-Android');
-
+    headers.append('x-guid', 'halebop#eu-west-1:8138c478-b446-4566-b7e1-b4507c05ecf1');
+    headers.append('x-channel-name', 'halebop-Android');
+  
     return this.http
-                .get(this.buildEngineURL(previousQueryParams.env)+queryType+problemID, {headers: headers})
-                .map((r: Response) => r.json().data as solutionData[]);
+                .get(previousQueryParams.env['ce']+'v2/contentengine/'+queryType+problemID, {headers: headers})
+                //.get(this.buildEngineURL(previousQueryParams.env)+queryType+problemID, {headers: headers})
+                .map((r: Response) => r.json().data as solutionData);
   }
 
   getSolutionHTML(uri: string): Observable<string>{
-    let baseURL: string = "https://s3-eu-west-1.amazonaws.com/content-int-test.ebuilder.io";
+    //let baseURL: string = "https://s3-eu-west-1.amazonaws.com/content-int-test.ebuilder.io";
 
     return this.http
-                .get(baseURL+uri)
+                .get(uri)
                 .map((r: Response) => r.text() as string);
   }
 }

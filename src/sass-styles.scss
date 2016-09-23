@@ -1,7 +1,7 @@
 /* RGB */
 $colorLight: rgba(255, 217, 218, 1);
-$colorPinkLight: rgba(234, 99, 140, 1);
-$colorPinkDark: rgba(137, 2, 62, 1);
+$colorMainLight: rgba(234, 99, 140, 1);
+$colorMainDark: rgba(137, 2, 62, 1);
 $colorDark: rgba(48, 52, 63, 1);
 $colorBlack: rgba(27, 32, 33, 1);
 $colorPurpleDark: #39002f;
@@ -54,6 +54,11 @@ $wrapperWidth: 90%;
     margin-bottom:20px;
 }
 
+#input {
+    text-align:center;
+    margin-bottom: 20px;
+}
+
 #header #logoContainer {
     /* text-align: left;
     width: 23%;
@@ -61,12 +66,18 @@ $wrapperWidth: 90%;
     @include box-sizing(border-box);
     vertical-align: bottom;
     display: inline-block;*/
+    background: $colorMainDark;
     text-align:center;
-    margin-bottom:25px;
+    margin-bottom:20px;
     margin-top:20px;
+
     img {
-        height:100px;
+        height: 51px;
+        padding-top:15px;
+        margin-left:20px;
+        margin-right:20px;
     }
+    height:  80px;
 }
 
 #searchOptions {
@@ -83,18 +94,18 @@ $wrapperWidth: 90%;
 input {
     @include box-sizing(border-box);
     border: none;
-    border-bottom:1px solid $colorPinkLight;
+    border-bottom:1px solid $colorMainLight;
     line-height:1.5em;
     display: inline-block;
     vertical-align: bottom;
     margin:0px 10px;
     // padding:10px;
-    font-size: 1.2em;
+    font-size: 1em;
     @include transition(border-bottom, 2s);
     &:focus {
         outline:none;
         @include transition(border-bottom, 2s);
-        border-bottom:1px solid $colorPinkDark;
+        border-bottom:1px solid $colorMainDark;
     }
 }
 
@@ -108,32 +119,68 @@ select {
 
 button {
     @extend input;
-    background-color: $colorPinkDark;
+    background-color: $colorMainDark;
     color:white;
-    padding:10px 20px;
+    padding:4px 20px;
     // margin:0px 10px;
     cursor:pointer;
     &:active {
-        background-color:$colorPinkLight;
+        background-color:$colorMainLight;
     }
 }
+
+// .showAll {
+//     width:100%;
+//     margin:0;
+//     background-color:white;
+//     color:black;
+// }
+
+// .showAll.active {
+
+// }
+
+// .showAll.inactive {
+//     background-color:white;
+//     color:black;
+// }
 
 .solution {
     // border: 1px solid gray;
     padding: 20px 20px;
     @include box-sizing(border-box);
     @include boxShadow();
-    border-left: 3px solid $colorPurpleDark;
+    border-left: 3px solid $colorMainDark;
     margin-bottom:20px;
 }
 
 .problem .description {
     font-size:0.7em;
     padding:5px 20px;
+    @include transition(padding, 0.5s);
     @include box-sizing(border-box);
-    &:hover {
-        background-color: $colorPinkDark;
+    &:hover, &.selectedProblem {
+        @include transition(padding, 0.2s);
+        // background-color: $colorMainDark;
+        padding-left:30px;
+        // color:white;
+    }
+    &.selectedProblem {
+        background-color: $colorMainDark;
         color:white;
+    }
+}
+
+
+
+.showAll {
+    background-color:white;
+    color:black;
+    width:100%;
+    margin:0;
+    &.active, &:hover {
+        background-color: $colorMainDark;
+        color: white;
     }
 }
 
@@ -142,10 +189,10 @@ button {
     color:white;
 }
 
-.selectedProblem {
-    background-color:$colorPinkDark;
-    color:white;
-}
+// .selectedProblem {
+//     background-color:$colorMainDark;
+//     color:white;
+// }
 
 .divider {
     border-color: $colorPurpleDark;    
@@ -156,4 +203,8 @@ button {
     text-align: center;
     margin:auto;
     width:50%;
+}
+
+.mainSearch {
+    margin: 20px 0px;
 }

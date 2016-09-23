@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'stringFilter'
+  name: 'stringFilter',
+  pure: false
 })
 
 export class StringFilterPipe implements PipeTransform {
@@ -13,6 +14,7 @@ export class StringFilterPipe implements PipeTransform {
       if(item.contentText == undefined) return true;
       return (item.contentText.toLowerCase().indexOf(args[0].toLowerCase()) != -1 || item.title.indexOf(args[0]) != -1);
     });
+    
     args[1].displayedSolutions = filteredSolutions.length;
     return filteredSolutions;
   }

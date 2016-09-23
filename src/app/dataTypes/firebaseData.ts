@@ -1,13 +1,13 @@
 export class QueryParams {
     constructor(
         public env: Object,
-        public tenant: string,
-        public lang: string,
-        public category: string,
-        public model: string,
-        public os: string
+        public tenant: Object,
+        public lang: Object,
+        public category: Object,
+        public model: Object,
+        public os: Object
     ) {
-        this.env = env; //env.toLowerCase();
+        this.env = env.toLowerCase();
         this.tenant = tenant.toLowerCase();
         this.lang = lang.toLowerCase();
         this.category = category.toLowerCase();

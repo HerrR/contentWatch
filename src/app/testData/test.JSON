@@ -2,22 +2,34 @@
   "env": {
     "dev": {
       "ce": "http://1-0-content-engine-mi-dev-ebuilder.eu-west-1.elasticbeanstalk.com/",
-      "s3": "https://s3-eu-west-1.amazonaws.com/content-int-dev.ebuilder.io/v1_10/"
+      "s3": "https://s3-eu-west-1.amazonaws.com/content-int-dev.ebuilder.io"
     },
     "test": { 
       "ce": "http://1-0-contentengine-mi-test-ebuilder.eu-west-1.elasticbeanstalk.com/",
-      "s3": "https://s3-eu-west-1.amazonaws.com/content-int-test.ebuilder.io/v1_10/"
+      "s3": "https://s3-eu-west-1.amazonaws.com/content-int-test.ebuilder.io"
      },
     "prod": { 
       "ce": "http://skutt-contentengine-mi-prod-ebuilder.eu-west-1.elasticbeanstalk.com/",
-      "s3": "https://s3-eu-west-1.amazonaws.com/content-int.ebuilder.io/v1_10/"
+      "s3": "https://s3-eu-west-1.amazonaws.com/content-int.ebuilder.io"
      }
   },
   "category": {
-    "iphone": "iPhone",
-    "generic": "Generic",
-    "galaxy": "Galaxy",
-    "xperia": "Xperia"
+    "iphone": {
+      "name": "iPhone",
+      "ostype": "iphone"
+    },
+    "generic": {
+      "name": "Generic",
+      "ostype": "Android"
+    },
+    "galaxy": {
+      "name": "Galaxy",
+      "ostype": "Android"
+    },
+    "xperia": {
+      "name": "Xperia",
+      "ostype": "Android"
+    }
   },
   "model": {
     "iphone": {
@@ -87,10 +99,38 @@
       "9": true,
       "10": true
     },
-    "android": {
+    "galaxy": {
       "5": true,
       "6": true,
       "7": true
+    },
+    "generic": {
+      "5": true,
+      "6": true,
+      "7": true
+    },
+    "xperia": {
+      "5": true,
+      "6": true,
+      "7": true      
+    }
+  },
+  "lang":{
+    "en": "English",
+    "sv": "Swedish"
+    },
+  "tenant":{
+    "dev":{
+      "Telia": "teliaidaidev",
+      "Halebop": "halebopidaidev"
+    },
+    "test":{
+      "Telia": "teliaidaitest",
+      "Halebop": "halebopidaitest" 
+    },
+    "prod":{
+      "Telia": "telia",
+      "Halebop": "halebop"
     }
   }
 }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 import * as firebase from 'firebase'; //temp fix for typings bug in somewhere, prob angluar-cli beta14
@@ -12,6 +12,7 @@ import { SolutionComponent } from './components/solution/solution.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { AppSolutionsViewComponent } from './components/app-solutions-view/app-solutions-view.component';
 import { StringFilterPipe } from './pipes/string-filter.pipe';
+import { InputComponent } from './components/input/input.component';
 
 //Firebase Configuration contant
 export const firebaseConfig = {
@@ -30,11 +31,13 @@ export const firebaseConfig = {
     SolutionComponent,
     AppHeaderComponent,
     AppSolutionsViewComponent,
-    StringFilterPipe
+    StringFilterPipe, 
+    InputComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
