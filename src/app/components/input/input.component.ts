@@ -15,6 +15,7 @@ export class InputComponent implements OnInit {
   inputForm: FormGroup;
   addresses: FormArray;
   modelValue: Array<any>;
+  envValue: Object;
 
   categoryForm: FormControl;
   langForm: FormControl;
@@ -30,7 +31,7 @@ export class InputComponent implements OnInit {
   category: FirebaseListObservable<any[]>;
   model: FirebaseListObservable<any[]>;
   os: FirebaseListObservable<any[]>;
-  lol: FirebaseListObservable<any[]>;
+  envObject: FirebaseObjectObservable<any[]>;
 
   constructor(
     private _fb: FormBuilder, //Formbuilder
@@ -38,24 +39,21 @@ export class InputComponent implements OnInit {
     ) {
     //Firebase objects:
     this.env = af.database.list('/env');
-    this.tenant = af.database.list('/tenant/prod');
+    this.tenant = af.database.list('/tenant/test');
     this.lang = af.database.list('/lang');
     this.category = af.database.list('/category');
     this.model = af.database.list('/model/iphone');
     this.os = af.database.list('/os/iphone');
-
-    this.lol = af.database.list('/');
-    af.database.object('/').subscribe(
-       res => {
-         console.log(res);
-        });
+    
+    this.envObject = af.database.object('/env');
+    this.envObject.subscribe( (data:Object) => this.envValue = data );
     //Create Forms
     this.categoryForm = new FormControl('iphone');
     this.langForm = new FormControl('en');
     this.modelForm = new FormControl('iphone6s');
     this.osForm = new FormControl('9');
-    this.tenantForm = new FormControl('telia');
-    this.envForm = new FormControl('prod');
+    this.tenantForm = new FormControl('teliaidaitest');
+    this.envForm = new FormControl('test');
 
     this.inputForm = new FormGroup({
       category: this.categoryForm,
@@ -111,21 +109,33 @@ export class InputComponent implements OnInit {
 
   @Output() searchEvent = new EventEmitter<any>();
 
-  ngOnInit() {}
-  queryTerms: QueryParams = new QueryParams("test", "halebop", "en", "iphone", "iphone6", "9");
+  ngOnInit() {
+
+  }
+  queryTerms: QueryParams;
 
   onSubmit() {
-//feels unneccessary to convert inputForm to queryTerms
-    this.queryTerms.env = this.inputForm.value.env;
-    this.queryTerms.tenant = this.inputForm.value.tenant;
-    this.queryTerms.lang = this.inputForm.value.lang;
-    this.queryTerms.category = this.inputForm.value.category;
-    this.queryTerms.model = this.inputForm.value.model;
-    this.queryTerms.os = this.inputForm.value.os;
+    console.log(this.envValue[this.envForm.value]);
+    this.queryTerms = new QueryParams(
+      this.envValue[this.envForm.value], 
+      this.tenantForm.value, 
+      this.langForm.value,
+      this.categoryForm.value,
+      this.modelForm.value,
+      this.osForm.value
+    );
+    //feels unneccessary to convert inputForm to queryTerms
+
+    // this.queryTerms.env = this.envForm.value;
+    // this.queryTerms.tenant = this.tenantForm.value;
+    // this.queryTerms.lang = this.langForm.value;
+    // this.queryTerms.category = this.categoryForm.value;
+    // this.queryTerms.model = this.modelForm.value;
+    // this.queryTerms.os = this.osForm.value;
 
     console.log(this.inputForm.value);
     console.log(this.queryTerms);
 
-    this.searchEvent.emit(this.inputForm.value);
+    this.searchEvent.emit(this.queryTerms);
   }
 }

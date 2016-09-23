@@ -54,6 +54,11 @@ $wrapperWidth: 90%;
     margin-bottom:20px;
 }
 
+#input {
+    text-align:center;
+    margin-bottom: 20px;
+}
+
 #header #logoContainer {
     /* text-align: left;
     width: 23%;
@@ -65,11 +70,14 @@ $wrapperWidth: 90%;
     text-align:center;
     margin-bottom:20px;
     margin-top:20px;
+
     img {
         height: 51px;
-        padding-top:20px;
+        padding-top:15px;
+        margin-left:20px;
+        margin-right:20px;
     }
-    height:  120px;
+    height:  80px;
 }
 
 #searchOptions {
@@ -86,8 +94,7 @@ $wrapperWidth: 90%;
 input {
     @include box-sizing(border-box);
     border: none;
-    border-bottom:1px solid $colorMainLight
-;
+    border-bottom:1px solid $colorMainLight;
     line-height:1.5em;
     display: inline-block;
     vertical-align: bottom;

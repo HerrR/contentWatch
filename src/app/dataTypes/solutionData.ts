@@ -4,14 +4,13 @@ export class solutionData {
     ) {
         this.data = data;
     }
-
     public resetData() {
         this.data = new Array<Solution>();
     }
 }
+
 export class Solution {
     public contentText: string = "";
-
     constructor(
         public title: string,
         public uri: string
@@ -19,10 +18,7 @@ export class Solution {
         this.title = title;
         this.uri = uri;
     }
-
-    
 }
-
 export class solutionDataWithProblemID {
     constructor(
         public data: solutionData[],     

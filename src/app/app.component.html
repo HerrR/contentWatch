@@ -1,6 +1,7 @@
-<app-header (searchEvent)="onSearchEvent($event)">
+<app-header>
 </app-header>
-
+<app-input id="input" (searchEvent)="onSearchEvent($event)">
+</app-input>
 <div id="wrapper">
   <div id="left-column">
     <div *ngFor="let category of categories" class="category">
@@ -14,6 +15,10 @@
     </div>
   </div>
   <div id="right-column">
-    <app-solutions-view [solutions]="solutions"></app-solutions-view>
+    <app-solutions-view 
+      [solutions]="solutions" 
+      [mostRecentQuery]="mostRecentQuery"
+      >
+      </app-solutions-view>
   </div>
 </div>

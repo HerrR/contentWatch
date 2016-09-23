@@ -2,15 +2,15 @@
   "env": {
     "dev": {
       "ce": "http://1-0-content-engine-mi-dev-ebuilder.eu-west-1.elasticbeanstalk.com/",
-      "s3": "https://s3-eu-west-1.amazonaws.com/content-int-dev.ebuilder.io/v1_10/"
+      "s3": "https://s3-eu-west-1.amazonaws.com/content-int-dev.ebuilder.io"
     },
     "test": { 
       "ce": "http://1-0-contentengine-mi-test-ebuilder.eu-west-1.elasticbeanstalk.com/",
-      "s3": "https://s3-eu-west-1.amazonaws.com/content-int-test.ebuilder.io/v1_10/"
+      "s3": "https://s3-eu-west-1.amazonaws.com/content-int-test.ebuilder.io"
      },
     "prod": { 
       "ce": "http://skutt-contentengine-mi-prod-ebuilder.eu-west-1.elasticbeanstalk.com/",
-      "s3": "https://s3-eu-west-1.amazonaws.com/content-int.ebuilder.io/v1_10/"
+      "s3": "https://s3-eu-west-1.amazonaws.com/content-int.ebuilder.io"
      }
   },
   "category": {

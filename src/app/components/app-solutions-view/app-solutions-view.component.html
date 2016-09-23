@@ -7,7 +7,10 @@
         name="solutionSearchQuery"/>
 </div>
 <div *ngFor="let solution of solutions?.data | stringFilter : [solutionSearchQuery, solutionCounter]" class="solution" #someVar>
-    <app-solution [solution]="solution"></app-solution>
+    <app-solution 
+        [solution]="solution"
+        [mostRecentQuery]="mostRecentQuery"
+    ></app-solution>
     <div class="solution-id">
         {{ solution.title }}
     </div>

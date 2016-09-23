@@ -25,6 +25,7 @@ export class AppComponent {
   }
 
   onSearchEvent(queryParams){
+    console.log("Serach EVEENT DETECTAED YO")
     this.solutions = undefined;
     this.categories = undefined;
     this.mostRecentQuery = queryParams;
