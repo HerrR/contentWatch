@@ -4,10 +4,11 @@
 </app-input>
 <div id="wrapper">
   <div id="left-column">
+    <button (click)="displayAll()" class="showAll" *ngIf="categories?.length > 0" [ngClass]="{'active': isShowingAll() }">Show all</button>
     <div *ngFor="let category of categories" class="category">
       <app-main-category 
           [category]=category 
-          [activeCategoryUUID]="solutions?.problemID"
+          [activeCategoryUUID]="selectedProblemID"
           [mostRecentQuery]="mostRecentQuery"
           (onCategorySelect)="categorySelected($event)"
           >
@@ -15,9 +16,10 @@
     </div>
   </div>
   <div id="right-column">
-    <app-solutions-view 
-      [solutions]="solutions" 
+    <app-solutions-view
+      [solutions]="solutions"
       [mostRecentQuery]="mostRecentQuery"
+      [activeCategoryUUID]="selectedProblemID"
       >
       </app-solutions-view>
   </div>

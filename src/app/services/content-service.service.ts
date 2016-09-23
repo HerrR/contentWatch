@@ -27,29 +27,24 @@ export class ContentService {
                       /*,
                       'X-Requested-With': 'com.teliasonera.deviceselfservice.telia',
                       'x-api-key': 'Nqd1RbJkW1hoAlPu9xTcP2Vd5Ceg5AIy',*/
-     
-      // console.log("Query: "+this.buildEngineURL(params.env)+queryString);
-      // console.log("Headers: ", headers);
 
       let queryString:string = `navigation?query={"tags":{"tenant":["${params.tenant}"],"lang":["${params.lang}"],"category":["${params.category}"],"model":["${params.model}"],"os":["${params.os}"]},"params":{"page":0}}`;
-      console.log(headers);
-      console.log(queryString);
-      console.log(params.env['ce']+'v2/contentengine/'+queryString);
+      
       return this.http
                   .get(params.env['ce']+'v2/contentengine/'+queryString, {headers: headers})
                   .map((r: Response) => r.json().data as navEntries[]);
   }
 
-  getSolutions(problemID: string, previousQueryParams: QueryParams): Observable<solutionData[]>{
+  getSolutions(problemID: string, previousQueryParams: QueryParams): Observable<solutionData>{
     let queryType:string = "solutions/";
     const headers = new Headers();
     headers.append('x-guid', 'halebop#eu-west-1:8138c478-b446-4566-b7e1-b4507c05ecf1');
     headers.append('x-channel-name', 'halebop-Android');
-    console.log("COOL STUFF"+previousQueryParams.env['ce'])
+  
     return this.http
                 .get(previousQueryParams.env['ce']+'v2/contentengine/'+queryType+problemID, {headers: headers})
                 //.get(this.buildEngineURL(previousQueryParams.env)+queryType+problemID, {headers: headers})
-                .map((r: Response) => r.json().data as solutionData[]);
+                .map((r: Response) => r.json().data as solutionData);
   }
 
   getSolutionHTML(uri: string): Observable<string>{

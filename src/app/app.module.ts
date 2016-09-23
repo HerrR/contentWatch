@@ -32,7 +32,7 @@ export const firebaseConfig = {
     AppHeaderComponent,
     AppSolutionsViewComponent,
     StringFilterPipe, 
-    InputComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,

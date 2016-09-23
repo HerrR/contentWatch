@@ -1,4 +1,4 @@
-<div class="categoryName background-purple">{{ category.entry.categoryDesc }}</div>
+<div class="categoryName background-purple" (click)="selectThisCategory()">{{ category.entry.categoryDesc }}</div>
 <div *ngFor="let problem of category.entry.problems">
   <app-problem 
       [uuid]="problem.uuid" 

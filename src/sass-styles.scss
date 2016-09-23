@@ -125,10 +125,25 @@ button {
     // margin:0px 10px;
     cursor:pointer;
     &:active {
-        background-color:$colorMainLight
-    ;
+        background-color:$colorMainLight;
     }
 }
+
+// .showAll {
+//     width:100%;
+//     margin:0;
+//     background-color:white;
+//     color:black;
+// }
+
+// .showAll.active {
+
+// }
+
+// .showAll.inactive {
+//     background-color:white;
+//     color:black;
+// }
 
 .solution {
     // border: 1px solid gray;
@@ -142,10 +157,30 @@ button {
 .problem .description {
     font-size:0.7em;
     padding:5px 20px;
+    @include transition(padding, 0.5s);
     @include box-sizing(border-box);
-    &:hover {
+    &:hover, &.selectedProblem {
+        @include transition(padding, 0.2s);
+        // background-color: $colorMainDark;
+        padding-left:30px;
+        // color:white;
+    }
+    &.selectedProblem {
         background-color: $colorMainDark;
         color:white;
+    }
+}
+
+
+
+.showAll {
+    background-color:white;
+    color:black;
+    width:100%;
+    margin:0;
+    &.active, &:hover {
+        background-color: $colorMainDark;
+        color: white;
     }
 }
 
@@ -154,10 +189,10 @@ button {
     color:white;
 }
 
-.selectedProblem {
-    background-color:$colorMainDark;
-    color:white;
-}
+// .selectedProblem {
+//     background-color:$colorMainDark;
+//     color:white;
+// }
 
 .divider {
     border-color: $colorPurpleDark;    
@@ -168,4 +203,8 @@ button {
     text-align: center;
     margin:auto;
     width:50%;
+}
+
+.mainSearch {
+    margin: 20px 0px;
 }
