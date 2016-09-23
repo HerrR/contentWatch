@@ -20,12 +20,18 @@ export class SolutionComponent implements OnInit {
 
   ngOnInit() {
     this.dataContainer.nativeElement.innerHTML = "Loading...";
-    this.contentEngineService.getSolutionHTML(this.mostRecentQuery.env['s3']+this.solution.uri).subscribe(
-      (data:string) => {
-        this.dataContainer.nativeElement.innerHTML = data;
-        // Remove tags and multiple spaces / tabs / indents
-        this.solution.contentText = data.replace(/<\/?[^>]+(>|$)/g,"").replace(/\s\s+/g, ' ');
-      }
-    )
+    
+    if(this.solution.contentHTML == undefined){
+      this.contentEngineService.getSolutionHTML(this.mostRecentQuery.env['s3']+this.solution.uri).subscribe(
+        (data:string) => {
+          this.dataContainer.nativeElement.innerHTML = data;
+          // Remove tags and multiple spaces / tabs / indents
+          this.solution.contentText = data.replace(/<\/?[^>]+(>|$)/g,"").replace(/\s\s+/g, ' ');
+          this.solution.contentHTML = data;
+        }
+      )
+    } else {
+      this.dataContainer.nativeElement.innerHTML = this.solution.contentHTML;
+    }
   }
 }

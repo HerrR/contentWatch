@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContentService } from './services/content-service.service';
 import { navEntries } from './dataTypes/navData';
-import { solutionData, solutionDataWithProblemID } from './dataTypes/solutionData';
+import { solutionData, solutionDataWithProblemID, Solution } from './dataTypes/solutionData';
 import { QueryParams } from './dataTypes/queryParams';
 
 @Component({
@@ -13,11 +13,9 @@ import { QueryParams } from './dataTypes/queryParams';
 
 export class AppComponent {
   categories: navEntries;
-  solutions: solutionDataWithProblemID;
-  responseData: navEntries;
+  selectedProblemID: string[] = [];
   mostRecentQuery: QueryParams;
-  numSolutionsDisplayed: number;
-  //refs/remotes/origin/custom-search
+  solutions: Solution[] = [];
 
   constructor(
     private contentEngineService: ContentService
@@ -25,9 +23,9 @@ export class AppComponent {
   }
 
   onSearchEvent(queryParams){
-    console.log("Serach EVEENT DETECTAED YO")
-    this.solutions = undefined;
     this.categories = undefined;
+    this.solutions = [];
+    this.selectedProblemID = [];
     this.mostRecentQuery = queryParams;
     this.contentEngineService.getNavigation(queryParams)
       .subscribe(
@@ -35,16 +33,48 @@ export class AppComponent {
       );
   }
 
-  onCategoryData(data :navEntries) { 
+  onCategoryData(data :navEntries) {
     this.categories = data;
   }
 
-  displayAll(){
+  isShowingAll() {
 
+    return this.selectedProblemID.indexOf("button-all") > -1;
   }
 
-  categorySelected(solutions){
-    this.solutions = solutions;
+  displayAll(){
+    let idArray: string[] = [];
+    for(let c in this.categories){
+      for(let p in this.categories[c].entry.problems){
+        idArray.push(this.categories[c].entry.problems[p].uuid);
+      }
+    }
+
+    this.categorySelected(idArray);
+    this.selectedProblemID = ["button-all"];
+  }
+
+  categorySelected(id: string[]){
+    
+    this.selectedProblemID = id;
+    if(this.solutions != undefined){
+      this.solutions.length = 0;
+    }
+
+    for(let i in id){
+      this.contentEngineService.getSolutions(id[i], this.mostRecentQuery).subscribe(
+      (data:solutionData) => { 
+        // let tempArray = this.solutions;
+        // let tempArray = this.solutions;
+        for(let s in data){
+          this.solutions.push(data[s]);
+          // tempArray.push(data[s]);
+          // this.solutions.push(data[s]);
+        }
+        // this.solutions = new Array<Solution>();
+        // this.solutions = tempArray;
+      })
+    }
   }
 
   ngOnInit() {

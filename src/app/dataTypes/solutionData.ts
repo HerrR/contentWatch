@@ -4,13 +4,20 @@ export class solutionData {
     ) {
         this.data = data;
     }
+    
     public resetData() {
         this.data = new Array<Solution>();
+    }
+
+    public addElement(el: Solution) {
+        this.data.push(el);
     }
 }
 
 export class Solution {
     public contentText: string = "";
+    public contentHTML: string;
+    
     constructor(
         public title: string,
         public uri: string

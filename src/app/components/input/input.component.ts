@@ -39,7 +39,7 @@ export class InputComponent implements OnInit {
     ) {
     //Firebase objects:
     this.env = af.database.list('/env');
-    this.tenant = af.database.list('/tenant/test');
+    this.tenant = af.database.list('/tenant/prod');
     this.lang = af.database.list('/lang');
     this.category = af.database.list('/category');
     this.model = af.database.list('/model/iphone');
@@ -52,8 +52,8 @@ export class InputComponent implements OnInit {
     this.langForm = new FormControl('en');
     this.modelForm = new FormControl('iphone6s');
     this.osForm = new FormControl('9');
-    this.tenantForm = new FormControl('teliaidaitest');
-    this.envForm = new FormControl('test');
+    this.tenantForm = new FormControl('telia');
+    this.envForm = new FormControl('prod');
 
     this.inputForm = new FormGroup({
       category: this.categoryForm,
@@ -71,6 +71,7 @@ export class InputComponent implements OnInit {
     this.envForm.valueChanges.subscribe(
       then => this.updateEnvForm()
     );
+    // this.onSubmit();
    } //end of constructor
 
 
@@ -115,7 +116,7 @@ export class InputComponent implements OnInit {
   queryTerms: QueryParams;
 
   onSubmit() {
-    console.log(this.envValue[this.envForm.value]);
+    // console.log(this.envValue[this.envForm.value]);
     this.queryTerms = new QueryParams(
       this.envValue[this.envForm.value], 
       this.tenantForm.value, 
@@ -133,8 +134,8 @@ export class InputComponent implements OnInit {
     // this.queryTerms.model = this.modelForm.value;
     // this.queryTerms.os = this.osForm.value;
 
-    console.log(this.inputForm.value);
-    console.log(this.queryTerms);
+    // console.log(this.inputForm.value);
+    // console.log(this.queryTerms);
 
     this.searchEvent.emit(this.queryTerms);
   }

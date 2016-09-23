@@ -1,12 +1,12 @@
 <div class="displayInfo" *ngIf="solutionsFetched()">
-    <div class="numSolutionsDisplay">Displaying {{ solutionCounter.displayedSolutions }} of {{ solutions?.data.length }} solutions </div>
+    <div class="numSolutionsDisplay">Displaying {{ solutionCounter.displayedSolutions }} of {{ solutions?.length }} solutions </div>
     <input id="filterSolutions" 
         type="text" 
         placeholder="Search in solutions" 
         [(ngModel)]="solutionSearchQuery" 
         name="solutionSearchQuery"/>
 </div>
-<div *ngFor="let solution of solutions?.data | stringFilter : [solutionSearchQuery, solutionCounter]" class="solution" #someVar>
+<div *ngFor="let solution of solutions | stringFilter : [solutionSearchQuery, solutionCounter]" class="solution" #someVar>
     <app-solution 
         [solution]="solution"
         [mostRecentQuery]="mostRecentQuery"
@@ -15,3 +15,4 @@
         {{ solution.title }}
     </div>
 </div>
+
