@@ -20,14 +20,11 @@ export class TroubleshootingComponent implements OnInit {
       data => {
         this.mostRecentQuery = data;
         this.onSearchEvent(data);
-        // console.log(data);
       }
     );
   }
 
   onSearchEvent(queryParams){
-    // console.log("Query params recieved by main Component");
-    console.log(queryParams);
     this.categories = undefined;
     this.solutions = [];
     this.selectedProblemID = [];
@@ -48,6 +45,7 @@ export class TroubleshootingComponent implements OnInit {
   }
 
   displayAll(){
+    // Generate array with all problem IDs
     let idArray: string[] = [];
     for(let c in this.categories){
       for(let p in this.categories[c].entry.problems){
@@ -62,6 +60,7 @@ export class TroubleshootingComponent implements OnInit {
   categorySelected(id: string[]){
     
     this.selectedProblemID = id;
+    // Reset previous solutions
     if(this.solutions != undefined){
       this.solutions.length = 0;
     }
@@ -69,15 +68,9 @@ export class TroubleshootingComponent implements OnInit {
     for(let i in id){
       this.contentService.getSolutions(id[i], this.mostRecentQuery).subscribe(
       (data:solutionData) => { 
-        // let tempArray = this.solutions;
-        // let tempArray = this.solutions;
         for(let s in data){
           this.solutions.push(data[s]);
-          // tempArray.push(data[s]);
-          // this.solutions.push(data[s]);
         }
-        // this.solutions = new Array<Solution>();
-        // this.solutions = tempArray;
       })
     }
   }

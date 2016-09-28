@@ -1,5 +1,5 @@
-<div class="displayInfo" *ngIf="solutionsFetched()">
-    <div class="numSolutionsDisplay">Displaying {{ solutionCounter.displayedSolutions }} of {{ solutions?.length }} solutions </div>
+<div class="displayInfo" *ngIf="hasActiveCategory()">
+    <div class="numSolutionsDisplay" >Displaying {{ solutionCounter.displayedSolutions }} of {{ solutions?.length }} solutions </div>
     <input id="filterSolutions" 
         type="text" 
         placeholder="Search in solutions" 

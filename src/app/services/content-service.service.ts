@@ -15,29 +15,14 @@ export class ContentService {
     private http: Http
   ) {}
 
-  // Observable string sources
+  
   private queryParams = new Subject<QueryParams>();
-  // private missionAnnouncedSource = new Subject<string>();
-  // private missionConfirmedSource = new Subject<string>();
-  // Observable string streams
+  
   queryParams$ = this.queryParams.asObservable();
-  // missionAnnounced$ = this.missionAnnouncedSource.asObservable();
-  // missionConfirmed$ = this.missionConfirmedSource.asObservable();
-  // Service message commands
+  
   setQueryParams(qp: QueryParams){
-    console.log("Setting query params in service", qp);
-    // console.log(qp);
-    // console.log(this.queryParams);
     this.queryParams.next(qp);
-    // console.log(this.queryParams);
   }
-
-  // announceMission(mission: string) {
-  //   this.missionAnnouncedSource.next(mission);
-  // }
-  // confirmMission(astronaut: string) {
-  //   this.missionConfirmedSource.next(astronaut);
-  // }
 
   
   buildEngineURL(env:Object){

@@ -19,8 +19,8 @@ export class AppSolutionsViewComponent implements OnInit {
   
   constructor() { }  
 
-  solutionsFetched(){
-    return (this.solutions == undefined) ? false : true;
+  hasActiveCategory(){
+    return this.activeCategoryUUID != "";
   }
 
   ngOnInit() {
