@@ -6,8 +6,7 @@ import { QueryParams } from '../../dataTypes/queryParams';
 
 @Component({
   selector: 'app-solutions-view',
-  templateUrl: './app-solutions-view.component.html',
-  styleUrls: ['./app-solutions-view.component.css']
+  templateUrl: './app-solutions-view.component.html'
 })
 export class AppSolutionsViewComponent implements OnInit {
   @Input() solutions: Solution[];

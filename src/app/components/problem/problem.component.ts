@@ -5,8 +5,7 @@ import { QueryParams } from '../../dataTypes/queryParams';
 
 @Component({
   selector: 'app-problem',
-  templateUrl: './problem.component.html',
-  styleUrls: ['./problem.component.css'],
+  template: '<div (click)="onClick()" class="description" [class.selectedProblem]="isActive()">{{ problemDesc }}</div>',
   providers: [ContentService]
 })
 export class ProblemComponent implements OnInit {

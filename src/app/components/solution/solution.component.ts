@@ -5,8 +5,7 @@ import { QueryParams } from '../../dataTypes/queryParams';
 
 @Component({
   selector: 'app-solution',
-  templateUrl: './solution.component.html',
-  styleUrls: ['./solution.component.css'],
+  template: '<div #dataContainer></div>',
   providers: [ContentService]
 })
 export class SolutionComponent implements OnInit {

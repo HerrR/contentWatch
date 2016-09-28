@@ -3,8 +3,7 @@ import { QueryParams } from '../../dataTypes/queryParams';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './app-header.component.html',
-  styleUrls: ['./app-header.component.scss']
+  templateUrl: './app-header.component.html'
 })
 
 export class AppHeaderComponent implements OnInit {

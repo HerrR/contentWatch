@@ -5,8 +5,7 @@ import { solutionData, solutionDataWithProblemID } from '../../dataTypes/solutio
 
 @Component({
   selector: 'app-main-category',
-  templateUrl: './main-category.component.html',
-  styleUrls: ['./main-category.component.css']
+  templateUrl: './main-category.component.html'
 })
 
 export class MainCategoryComponent implements OnInit {

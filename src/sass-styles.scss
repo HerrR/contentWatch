@@ -212,8 +212,36 @@ button {
     text-align: center;
     margin:auto;
     width:50%;
+    background-color:rgba(0,0,0,0);
 }
 
 .mainSearch {
     margin: 20px 0px;
+}
+
+.description {
+    cursor:pointer;
+}
+
+.categoryName {
+    padding:10px 20px;
+    box-sizing:border-box;
+    cursor:pointer;
+    font-size:1em;
+}
+
+.solution-id {
+    text-align: right;
+    color: #dadada;
+    font-size: 0.8em;
+}
+
+.displayInfo {
+    margin-bottom:20px;
+    padding:20px;
+    text-align: center;
+}
+
+.numSolutionsDisplay {
+    margin-bottom:20px;
 }
