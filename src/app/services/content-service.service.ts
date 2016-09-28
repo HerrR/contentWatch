@@ -22,8 +22,8 @@ export class ContentService {
   getNavigation(params): Observable<navEntries[]> {
       const headers = new Headers();
       //headers.append('x-guid', 'telia'+'-'+'test'+'#eu-west-1:8138c478-b446-4566-b7e1-b4507c05ecf1');
-      headers.append('x-guid', 'halebop#eu-west-1:8138c478-b446-4566-b7e1-b4507c05ecf1');
-      headers.append('x-channel-name', 'halebop-Android');
+      headers.append('x-guid', params.env['x-guid']);
+      headers.append('x-channel-name', 'contentWatch');
                       /*,
                       'X-Requested-With': 'com.teliasonera.deviceselfservice.telia',
                       'x-api-key': 'Nqd1RbJkW1hoAlPu9xTcP2Vd5Ceg5AIy',*/

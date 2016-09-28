@@ -5,6 +5,7 @@ $colorMainDark: rgba(137, 2, 62, 1);
 $colorDark: rgba(48, 52, 63, 1);
 $colorBlack: rgba(27, 32, 33, 1);
 $colorPurpleDark: #39002f;
+$background: rgba(245, 245, 245, 1);
 $wrapperWidth: 90%;
 
 @mixin transition($attribute, $time){
@@ -91,6 +92,10 @@ $wrapperWidth: 90%;
     }
 }
 
+body {
+    background: $background;
+}
+
 input {
     @include box-sizing(border-box);
     border: none;
@@ -147,16 +152,20 @@ button {
 
 .solution {
     // border: 1px solid gray;
+    font-size: 0.75em;
+    line-height: 1.5;
     padding: 20px 20px;
     @include box-sizing(border-box);
     @include boxShadow();
     border-left: 3px solid $colorMainDark;
     margin-bottom:20px;
+    background: white;
 }
 
 .problem .description {
     font-size:0.7em;
     padding:5px 20px;
+    background: white;
     @include transition(padding, 0.5s);
     @include box-sizing(border-box);
     &:hover, &.selectedProblem {
