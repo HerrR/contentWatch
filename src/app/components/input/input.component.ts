@@ -4,10 +4,12 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 import 'rxjs/add/operator/map'; //TODO: move to root level
 
 import { QueryParams } from '../../dataTypes/queryParams';
+import { ContentService } from '../../services/content-service.service';
 
 @Component({
   selector: 'app-input',
-  templateUrl: './input.component.html'
+  templateUrl: './input.component.html',
+  providers: [ContentService]
 })
 export class InputComponent implements OnInit {
 
@@ -33,9 +35,19 @@ export class InputComponent implements OnInit {
   envObject: FirebaseObjectObservable<any[]>;
 
   constructor(
+    private contentService: ContentService,
     private _fb: FormBuilder, //Formbuilder
     private af: AngularFire   //AngularFire object
     ) {
+
+      // constructor(private missionService: MissionService) {
+//     missionService.missionConfirmed$.subscribe(
+//       astronaut => {
+//         this.history.push(`${astronaut} confirmed the mission`);
+//       });
+//   }
+
+    // contentService.QueryParams$.subscribe
     //Firebase objects:
     this.env = af.database.list('/env');
     this.tenant = af.database.list('/tenant/prod');
@@ -110,7 +122,7 @@ export class InputComponent implements OnInit {
   @Output() searchEvent = new EventEmitter<any>();
 
   ngOnInit() {
-
+  
   }
   queryTerms: QueryParams;
 
@@ -136,6 +148,8 @@ export class InputComponent implements OnInit {
     // console.log(this.inputForm.value);
     // console.log(this.queryTerms);
 
+    // this.missionService.announceMission(mission);
+    // this.contentService.setQueryParams(this.queryTerms);
     this.searchEvent.emit(this.queryTerms);
   }
 }

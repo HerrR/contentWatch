@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 import * as firebase from 'firebase'; //temp fix for typings bug in somewhere, prob angluar-cli beta14
+import { routing } from './routing/app.routing';
 
 import { AppComponent } from './app.component';
 import { MainCategoryComponent } from './components/category/main-category.component';
@@ -13,6 +14,9 @@ import { AppHeaderComponent } from './components/app-header/app-header.component
 import { AppSolutionsViewComponent } from './components/app-solutions-view/app-solutions-view.component';
 import { StringFilterPipe } from './pipes/string-filter.pipe';
 import { InputComponent } from './components/input/input.component';
+import { TroubleshootingComponent } from './components/troubleshooting/troubleshooting.component';
+import { UsagetipsComponent } from './components/usagetips/usagetips.component';
+import { ContentService } from './services/content-service.service';
 
 //Firebase Configuration contant
 export const firebaseConfig = {
@@ -32,16 +36,19 @@ export const firebaseConfig = {
     AppHeaderComponent,
     AppSolutionsViewComponent,
     StringFilterPipe, 
-    InputComponent
+    InputComponent, 
+    TroubleshootingComponent, 
+    UsagetipsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    routing
   ],
-  providers: [],
+  providers: [ContentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

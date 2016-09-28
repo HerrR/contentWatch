@@ -7,17 +7,14 @@ import { QueryParams } from '../../dataTypes/queryParams';
 })
 
 export class AppHeaderComponent implements OnInit {
-  constructor() { }
-/*
   @Output() searchEvent = new EventEmitter<any>();
 
-  queryTerms: QueryParams = new QueryParams("test", "halebop", "en", "iphone", "iphone6", "9");
+  constructor() { }
 
-  onSubmit(){
-    this.searchEvent.emit(this.queryTerms);
+  onSearchEvent(queryParams){
+    this.searchEvent.emit(queryParams);
   }
-*/
+
   ngOnInit() {
   }
-
 }

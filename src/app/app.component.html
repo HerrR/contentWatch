@@ -1,26 +1,7 @@
-<app-header>
+<app-header (searchEvent)="onSearchEvent($event)">
 </app-header>
-<app-input id="input" (searchEvent)="onSearchEvent($event)">
-</app-input>
 <div id="wrapper">
-  <div id="left-column">
-    <button (click)="displayAll()" class="showAll" *ngIf="categories?.length > 0" [ngClass]="{'active': isShowingAll() }">Show all</button>
-    <div *ngFor="let category of categories" class="category">
-      <app-main-category 
-          [category]=category 
-          [activeCategoryUUID]="selectedProblemID"
-          [mostRecentQuery]="mostRecentQuery"
-          (onCategorySelect)="categorySelected($event)"
-          >
-      </app-main-category>
-    </div>
-  </div>
-  <div id="right-column">
-    <app-solutions-view
-      [solutions]="solutions"
-      [mostRecentQuery]="mostRecentQuery"
-      [activeCategoryUUID]="selectedProblemID"
-      >
-      </app-solutions-view>
-  </div>
+  <a routerLink="/usagetips">Usagetips</a>
+  <a routerLink="/troubleshooting">Troubleshooting</a>
+  <router-outlet></router-outlet>
 </div>
