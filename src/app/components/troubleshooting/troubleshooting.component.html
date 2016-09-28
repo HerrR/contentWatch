@@ -1,4 +1,4 @@
-<div>
+<div id="contentWrapper">
   <div id="left-column">
     <button (click)="displayAll()" class="showAll" *ngIf="categories?.length > 0" [ngClass]="{'active': isShowingAll() }">Show all</button>
     <div *ngFor="let category of categories" class="category">

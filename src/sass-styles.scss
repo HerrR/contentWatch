@@ -26,6 +26,18 @@ $wrapperWidth: 90%;
     box-shadow: 0px 8px 15px -5px rgba(71,71,71,0.5);
 }
 
+@mixin backgroundGradient($fallBack, $startCol, $endCol){
+    background: $fallBack; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient($startCol, $endCol); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient($startCol, $endCol); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient($startCol, $endCol); /* For Firefox 3.6 to 15 */
+    background: linear-gradient($startCol, $endCol); /* Standard syntax */
+}
+
+a {
+    text-decoration: none;
+}
+
 #wrapper {
     width: $wrapperWidth;
     display:block;
@@ -40,7 +52,7 @@ $wrapperWidth: 90%;
     text-align: left;
     vertical-align: top;
     margin-right:3%;
-    @include boxShadow();
+    // @include boxShadow();
 }
 
 #right-column {
@@ -48,10 +60,10 @@ $wrapperWidth: 90%;
     width:70%;
     text-align: left;
     vertical-align: top;
-
 }
 
 .category {
+    @include boxShadow();
     margin-bottom:20px;
 }
 
@@ -70,7 +82,7 @@ $wrapperWidth: 90%;
     background: $colorMainDark;
     text-align:center;
     // margin-bottom:20px;
-    margin-top:20px;
+    // margin-top:20px;
 
     img {
         height: 51px;
@@ -87,6 +99,7 @@ $wrapperWidth: 90%;
 
 #header {
     margin-bottom:20px;
+    background-color: white;
     @include boxShadow();
     input {
         width:10%;
@@ -187,7 +200,9 @@ button {
     background-color:white;
     color:black;
     width:100%;
-    margin:0;
+    // margin:0;
+    margin:10px 0px 20px 0px;
+    @include boxShadow();
     &.active, &:hover {
         background-color: $colorMainDark;
         color: white;
@@ -246,4 +261,27 @@ button {
 
 .numSolutionsDisplay {
     margin-bottom:20px;
+}
+
+.tabs {
+    @include box-sizing(border-box);
+    
+    .tab{
+        background-color: #e2e2e2;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        color:$colorBlack;
+        padding:10px 20px 5px 20px;
+        @include box-sizing(border-box);
+        display: inline-block;
+        
+        &.selectedTab{
+            background-color:white;
+        }
+    }
+}
+
+#contentWrapper {
+    // background-color:white;
+    @include backgroundGradient(white, white, whitesmoke);
 }

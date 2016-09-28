@@ -1,7 +1,9 @@
 <app-header (searchEvent)="onSearchEvent($event)">
 </app-header>
 <div id="wrapper">
-  <a routerLink="/usagetips">Usagetips</a>
-  <a routerLink="/troubleshooting">Troubleshooting</a>
+  <div class="tabs">
+    <a routerLink="/troubleshooting" class="tab" routerLinkActive="selectedTab">Troubleshooting</a>
+    <a routerLink="/usagetips" class="tab" routerLinkActive="selectedTab">Usagetips</a>
+  </div>
   <router-outlet></router-outlet>
 </div>
