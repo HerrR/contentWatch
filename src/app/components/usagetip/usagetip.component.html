@@ -1,0 +1,9 @@
+<h2>{{ tipData.title }}</h2>
+<div *ngIf="tipData.type == 'tip'">
+  <iframe width="560" height="315" [src]="trustedURL" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div *ngIf="tipData.type == 'quick_tip'">
+  <div [innerHTML]="tipData.content"></div>
+</div>
+

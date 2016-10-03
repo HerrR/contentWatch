@@ -8,8 +8,10 @@ import { Subscription }   from 'rxjs/Subscription';
   selector: 'app-usagetips',
   templateUrl: './usagetips.component.html'
 })
+
 export class UsagetipsComponent implements OnInit {
   mostRecentQuery: QueryParams;
+  usageTips: Object[] = [];
 
   constructor(private contentService:ContentService) {
     contentService.queryParams$.subscribe(
@@ -19,11 +21,18 @@ export class UsagetipsComponent implements OnInit {
       }
     );
   }
+
   onSearchEvent(queryParams){
     this.contentService.getUsageTips(queryParams)
       .subscribe(
         (data: any) => {
-          console.log(data)
+          data.forEach(element => {
+            this.usageTips.push(JSON.parse(element));
+            // console.log(JSON.parse(element));
+            // console.log();
+          });
+          // console.log(data);
+          // console.log(JSON.parse(data[0]));
         }
       );
   }

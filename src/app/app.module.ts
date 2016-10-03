@@ -17,6 +17,7 @@ import { InputComponent } from './components/input/input.component';
 import { TroubleshootingComponent } from './components/troubleshooting/troubleshooting.component';
 import { UsagetipsComponent } from './components/usagetips/usagetips.component';
 import { ContentService } from './services/content-service.service';
+import { UsagetipComponent } from './components/usagetip/usagetip.component';
 
 //Firebase Configuration contant
 export const firebaseConfig = {
@@ -38,7 +39,7 @@ export const firebaseConfig = {
     StringFilterPipe, 
     InputComponent, 
     TroubleshootingComponent, 
-    UsagetipsComponent
+    UsagetipsComponent, UsagetipComponent
   ],
   imports: [
     BrowserModule,

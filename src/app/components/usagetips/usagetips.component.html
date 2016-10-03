@@ -1,3 +1,9 @@
 <div id="contentWrapper">
   <h1 style="margin-top:0px;padding-top:20px;padding-bottom:40px;">Usage tips</h1>
+  <div *ngFor="let tip of usageTips">
+    <app-usagetip
+        [tipData]=tip 
+    >
+    </app-usagetip>
+  </div>
 </div>
