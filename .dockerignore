@@ -1,4 +1,11 @@
 node_modules
 src
-e32
+e2e
 .vscode
+.gitignore
+angular-cli.json
+karma.conf.json
+package.json
+protractor.conf
+README.md
+tslint.json
