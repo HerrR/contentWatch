@@ -1,3 +1,4 @@
+<div *ngFor="let cool of coolers | objectToList">{{cool.key}}</div>
 <form (ngSubmit)="onSubmit()" [formGroup]="inputForm" class="mainSearch">
   <!--
   <label *ngFor="let e of env | async">
@@ -5,22 +6,22 @@
   </label>
   -->
   <select formControlName="env">
-    <option *ngFor="let e of env | async" [value]="e.$key">{{e.$key}}</option>
+    <option *ngFor="let e of env | objectToList" [value]="e.key">{{e.key}}</option>
   </select>
   <select formControlName="tenant">
-    <option *ngFor="let t of tenant | async" [value]="t.$value">{{t.$key}}</option>
+    <option *ngFor="let t of tenant | objectToList" [value]="t.value">{{t.key}}</option>
   </select>
   <select formControlName="lang">
-    <option *ngFor="let l of lang | async" [value]="l.$key">{{l.$value}}</option>
+    <option *ngFor="let l of lang | objectToList" [value]="l.key">{{l.value}}</option>
   </select>
   <select formControlName="category">
-    <option *ngFor="let c of category | async" [value]="c.$key">{{c.name}}</option>
+    <option *ngFor="let c of category | objectToList" [value]="c.key">{{c.value.name}}</option>
   </select>
   <select formControlName="model">
-    <option *ngFor="let m of model | async" [value]="m.$key">{{m.$value}}</option>
+    <option *ngFor="let m of model | objectToList" [value]="m.key">{{m.value}}</option>
   </select>
   <select formControlName="os">
-    <option *ngFor="let o of os | async" [value]="o.$key">{{o.$key}}</option>
+    <option *ngFor="let o of os | objectToList" [value]="o.key">{{o.key}}</option>
   </select>
   <button type="submit">WATCH</button>
 </form>

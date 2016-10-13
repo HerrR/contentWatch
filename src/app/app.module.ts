@@ -6,20 +6,25 @@ import { AngularFireModule } from 'angularfire2';
 import * as firebase from 'firebase'; //temp fix for typings bug in somewhere, prob angluar-cli beta14
 import { routing } from './routing/app.routing';
 
+//Components
 import { AppComponent } from './app.component';
 import { MainCategoryComponent } from './components/category/main-category.component';
 import { ProblemComponent } from './components/problem/problem.component';
 import { SolutionComponent } from './components/solution/solution.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { AppSolutionsViewComponent } from './components/app-solutions-view/app-solutions-view.component';
-import { StringFilterPipe } from './pipes/string-filter.pipe';
 import { InputComponent } from './components/input/input.component';
 import { TroubleshootingComponent } from './components/troubleshooting/troubleshooting.component';
 import { UsagetipsComponent } from './components/usagetips/usagetips.component';
-import { ContentService } from './services/content-service.service';
 import { UsagetipComponent } from './components/usagetip/usagetip.component';
 
-//Firebase Configuration contant
+//Pipes
+import { StringFilterPipe } from './pipes/string-filter.pipe';
+import { ObjectToListPipe } from './pipes/object-to-list.pipe';
+//Services
+import { ContentService } from './services/content-service.service';
+
+//Firebase Configuration
 export const firebaseConfig = {
   apiKey: "AIzaSyDd8z7IHad9caGeUJI9rnVeY1xRvrqTY2I",
   authDomain: "contentwatch-8421b.firebaseapp.com",
@@ -39,7 +44,7 @@ export const firebaseConfig = {
     StringFilterPipe, 
     InputComponent, 
     TroubleshootingComponent, 
-    UsagetipsComponent, UsagetipComponent
+    UsagetipsComponent, UsagetipComponent, ObjectToListPipe
   ],
   imports: [
     BrowserModule,
