@@ -16,8 +16,8 @@ export class AppSolutionsViewComponent implements OnInit {
 
   solutionCounter = {"displayedSolutions":0};
   solutionSearchQuery: string = "";
-  
-  constructor() { }  
+  showUnique: boolean = false;
+  constructor() {}  
 
   hasActiveCategory(){
     return this.activeCategoryUUID != "";

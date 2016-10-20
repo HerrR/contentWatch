@@ -5,8 +5,12 @@
         placeholder="Search in solutions" 
         [(ngModel)]="solutionSearchQuery" 
         name="solutionSearchQuery"/>
+    <label>
+        <input type="checkbox" name="showUnique" [(ngModel)]="showUnique">
+        Show Unique Solutions
+    </label>
 </div>
-<div *ngFor="let solution of solutions | stringFilter : [solutionSearchQuery, solutionCounter]" class="solution" #someVar>
+<div *ngFor="let solution of solutions | stringFilter : [solutionSearchQuery,solutionCounter]:showUnique" class="solution" #someVar>
     <app-solution 
         [solution]="solution"
         [mostRecentQuery]="mostRecentQuery"
