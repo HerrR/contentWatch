@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
-import * as firebase from 'firebase'; //temp fix for typings bug in somewhere, prob angluar-cli beta14
 import { routing } from './routing/app.routing';
 
 //Components
