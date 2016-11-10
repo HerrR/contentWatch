@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 import { routing } from './routing/app.routing';
 
+import { AUTH_PROVIDERS } from 'angular2-jwt';
+
 //Components
 import { AppComponent } from './app.component';
 import { MainCategoryComponent } from './components/category/main-category.component';
@@ -20,8 +22,10 @@ import { UsagetipComponent } from './components/usagetip/usagetip.component';
 //Pipes
 import { StringFilterPipe } from './pipes/string-filter.pipe';
 import { ObjectToListPipe } from './pipes/object-to-list.pipe';
+
 //Services
 import { ContentService } from './services/content-service.service';
+// import { Auth } from './services/auth.service';
 
 //Firebase Configuration
 export const firebaseConfig = {
@@ -53,7 +57,7 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     routing
   ],
-  providers: [ContentService],
+  providers: [ContentService, AUTH_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
