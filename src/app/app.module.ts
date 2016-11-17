@@ -18,6 +18,7 @@ import { InputComponent } from './components/input/input.component';
 import { TroubleshootingComponent } from './components/troubleshooting/troubleshooting.component';
 import { UsagetipsComponent } from './components/usagetips/usagetips.component';
 import { UsagetipComponent } from './components/usagetip/usagetip.component';
+import { HomeComponent } from './components/home/home.component';
 
 //Pipes
 import { StringFilterPipe } from './pipes/string-filter.pipe';
@@ -25,6 +26,7 @@ import { ObjectToListPipe } from './pipes/object-to-list.pipe';
 
 //Services
 import { ContentService } from './services/content-service.service';
+import { AuthGuard } from './auth-guard';
 // import { Auth } from './services/auth.service';
 
 //Firebase Configuration
@@ -47,7 +49,7 @@ export const firebaseConfig = {
     StringFilterPipe, 
     InputComponent, 
     TroubleshootingComponent, 
-    UsagetipsComponent, UsagetipComponent, ObjectToListPipe
+    UsagetipsComponent, UsagetipComponent, ObjectToListPipe, HomeComponent
   ],
   imports: [
     BrowserModule,

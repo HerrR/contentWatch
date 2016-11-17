@@ -8,7 +8,7 @@ let Auth0Lock = require('auth0-lock').default;
 @Injectable()
 export class Auth {
   // Configure Auth0
-  lock = new Auth0Lock('FzBhlwtz4u5Qn2CTyCeZE1eTuqQywHRF', 'bergeling.eu.auth0.com', {});
+  lock = new Auth0Lock('K3ylCrHcqyythHXD9jsrqiTgtpYLZlBI', 'samuel.eu.auth0.com', {});
 
   constructor() {
     // Add callback for lock `authenticated` event

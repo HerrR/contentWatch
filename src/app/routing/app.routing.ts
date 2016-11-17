@@ -2,8 +2,8 @@ import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UsagetipsComponent } from './../components/usagetips/usagetips.component';
 import { TroubleshootingComponent } from './../components/troubleshooting/troubleshooting.component';
-
-
+import { AuthGuard } from './../auth-guard'; 
+import { HomeComponent } from './../components/home/home.component';
 const appRoutes: Routes = [
   {
     path: '',
@@ -20,6 +20,7 @@ const appRoutes: Routes = [
     data: {
         testData: "testData"
     }
+    //canActivate: [AuthGuard]
   }
 ];
 
