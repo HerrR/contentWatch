@@ -13,6 +13,7 @@ import { ObjectToListPipe } from '../../pipes/object-to-list.pipe';
   providers: [ContentService]
 })
 export class InputComponent implements OnInit {
+  @Output() searchEvent = new EventEmitter<any>();
 
   inputForm: FormGroup;
   addresses: FormArray;
@@ -35,6 +36,7 @@ export class InputComponent implements OnInit {
   model: Object;
   os: Object;
   envObject: FirebaseObjectObservable<any[]>;
+  usageTipsCategories: Object;
 
   fbObject: FirebaseObjectObservable<any[]>;
   coolers: Object;
@@ -64,6 +66,7 @@ export class InputComponent implements OnInit {
       this.category = this.fbObject['category'];
       this.model = this.fbObject['model']['iphone'];
       this.os = this.fbObject['os']['iphone'];
+      this.usageTipsCategories = this.fbObject['usagetipsCategories'];
     }
     );
 
@@ -110,21 +113,27 @@ export class InputComponent implements OnInit {
     this.tenant = this.fbObject['tenant'][this.envForm.value]
   };
 
-  @Output() searchEvent = new EventEmitter<any>();
 
   ngOnInit() {}
 
   queryTerms: QueryParams;
 
   onSubmit() {
+    let categories = [];
+
+    for(let i in this.usageTipsCategories){
+      categories.push(this.usageTipsCategories[i]["name"]);
+    }
+    
     this.queryTerms = new QueryParams(
-      this.env[this.envForm.value], 
-      this.tenantForm.value, 
-      this.langForm.value,
-      this.categoryForm.value,
-      this.modelForm.value,
-      this.osForm.value
-    );
-    this.searchEvent.emit(this.queryTerms);
+        this.env[this.envForm.value], 
+        this.tenantForm.value, 
+        this.langForm.value,
+        this.categoryForm.value,
+        this.modelForm.value,
+        this.osForm.value, 
+        categories
+      );
+      this.searchEvent.emit(this.queryTerms);
   }
 }

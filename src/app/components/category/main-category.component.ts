@@ -4,7 +4,7 @@ import { QueryParams } from '../../dataTypes/queryParams';
 import { solutionData, solutionDataWithProblemID } from '../../dataTypes/solutionData';
 
 @Component({
-  selector: 'app-main-category',
+  selector: 'app-ts-category',
   templateUrl: './main-category.component.html'
 })
 

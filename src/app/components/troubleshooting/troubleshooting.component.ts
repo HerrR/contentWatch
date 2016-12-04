@@ -16,7 +16,7 @@ export class TroubleshootingComponent implements OnInit {
   solutions: Solution[] = [];
   subscription: Subscription;
   constructor(private contentService: ContentService) {
-    contentService.queryParams$.subscribe(
+    contentService.queryParamsObservable.subscribe(
       data => {
         this.mostRecentQuery = data;
         this.onSearchEvent(data);
@@ -76,6 +76,6 @@ export class TroubleshootingComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.contentService.refreshPreviousQuery();
   }
-
 }
