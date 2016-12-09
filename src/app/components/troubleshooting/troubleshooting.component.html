@@ -2,13 +2,13 @@
   <div id="left-column">
     <button (click)="displayAll()" class="showAll" *ngIf="categories?.length > 0" [ngClass]="{'active': isShowingAll() }">Show all</button>
     <div *ngFor="let category of categories" class="category">
-      <app-main-category 
+      <app-ts-category 
           [category]=category 
           [activeCategoryUUID]="selectedProblemID"
           [mostRecentQuery]="mostRecentQuery"
           (onCategorySelect)="categorySelected($event)"
           >
-      </app-main-category>
+      </app-ts-category>
     </div>
   </div>
   <div id="right-column">

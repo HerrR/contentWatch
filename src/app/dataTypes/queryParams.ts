@@ -5,7 +5,8 @@ export class QueryParams {
         public lang: string,
         public category: string,
         public model: string,
-        public os: string
+        public os: string,
+        public usagetipsCategories: string[]
     ) {
         this.env = env; //env.toLowerCase();
         this.tenant = tenant.toLowerCase();
@@ -13,5 +14,6 @@ export class QueryParams {
         this.category = category.toLowerCase();
         this.model = model.toLowerCase();
         this.os = os;
+        this.usagetipsCategories = usagetipsCategories;
     }
 }

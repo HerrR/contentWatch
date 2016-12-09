@@ -1,20 +1,17 @@
 {
   "env": {
     "dev": {
-//      "ce": "http://1-0-content-engine-mi-dev-ebuilder.eu-west-1.elasticbeanstalk.com/",
       "ce": "http://1-0-content-engine-mi-dev-ebuilder.eu-west-1.elasticbeanstalk.com/",
       "s3": "https://s3-eu-west-1.amazonaws.com/content-int-dev.ebuilder.io",
       "x-guid": "halebop-dev#eu-west-1:8138c478-b446-4566-b7e1-b4507c05ecf1"
     },
     "test": { 
-//      "ce": "http://1-0-contentengine-mi-test-ebuilder.eu-west-1.elasticbeanstalk.com/",
       "ce": "http://1-0-contentengine-mi-test-ebuilder.eu-west-1.elasticbeanstalk.com/",
       "s3": "https://s3-eu-west-1.amazonaws.com/content-int-test.ebuilder.io",
       "x-guid": "halebop-test#eu-west-1:8138c478-b446-4566-b7e1-b4507c05ecf1"
      },
     "prod": { 
-//      "ce": "http://skutt-contentengine-mi-prod-ebuilder.eu-west-1.elasticbeanstalk.com/",
-      "ce": "https://fjg0re4lid.execute-api.eu-west-1.amazonaws.com/prod/",
+      "ce": "http://skutt-contentengine-mi-prod-ebuilder.eu-west-1.elasticbeanstalk.com/",
       "s3": "https://s3-eu-west-1.amazonaws.com/content-int.ebuilder.io",
       "x-guid": "halebop#eu-west-1:8138c478-b446-4566-b7e1-b4507c05ecf1"
      }
@@ -138,5 +135,14 @@
       "Telia": "telia",
       "Halebop": "halebop"
     }
-  }
+  },
+  "usagetipsCategories": 
+    [
+      {"name": "battery"}, 
+      {"name": "camera"}, 
+      {"name": "hotapps"}, 
+      {"name": "lifehacks"}, 
+      {"name": "news"}, 
+      {"name": "startup"}
+    ]
 }

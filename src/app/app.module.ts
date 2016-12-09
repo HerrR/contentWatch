@@ -27,6 +27,7 @@ import { ObjectToListPipe } from './pipes/object-to-list.pipe';
 //Services
 import { ContentService } from './services/content-service.service';
 import { AuthGuard } from './auth-guard';
+import { UsagetipsCategoryComponent } from './components/usagetips-category/usagetips-category.component';
 // import { Auth } from './services/auth.service';
 
 //Firebase Configuration
@@ -49,7 +50,7 @@ export const firebaseConfig = {
     StringFilterPipe, 
     InputComponent, 
     TroubleshootingComponent, 
-    UsagetipsComponent, UsagetipComponent, ObjectToListPipe, HomeComponent
+    UsagetipsComponent, UsagetipComponent, ObjectToListPipe, HomeComponent, UsagetipsCategoryComponent
   ],
   imports: [
     BrowserModule,

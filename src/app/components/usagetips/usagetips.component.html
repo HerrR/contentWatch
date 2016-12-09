@@ -1,9 +1,29 @@
 <div id="contentWrapper">
-  <h1 style="margin-top:0px;padding-top:20px;padding-bottom:40px;">Usage tips</h1>
-  <div *ngFor="let tip of usageTips">
-    <app-usagetip
-        [tipData]=tip 
-    >
-    </app-usagetip>
+  <div id="left-column">
+    <button (click)="displayAll()" class="showAll" [ngClass]="{active: showAll()}" *ngIf="numPages > 0">Show all</button>
+    <div *ngFor="let category of usageTipCategories" class="usageTipCategory">
+      <app-usagetips-category
+        [name]=category
+        [selectedCategories]=selectedCategories
+        (onCategorySelect)="categorySelected($event)"
+      >
+      </app-usagetips-category>
+    </div>
+  </div>
+  <div id="right-column">
+
+    <div *ngFor="let tip of usageTips">
+      <app-usagetip
+          [tipData]=tip 
+      >
+      </app-usagetip>
+    </div>
+
+    <div id="pageNumNavigation" *ngIf="numPages > 0">
+      <button (click)="previousPage()" [ngClass]="{disabled: pageNumber == 0}">Previous</button>
+        {{ pageNumber + 1 }} / {{ numPages }}
+      <button (click)="nextPage()" [ngClass]="{disabled: pageNumber == numPages-1}">Next</button>
+    </div>
+
   </div>
 </div>

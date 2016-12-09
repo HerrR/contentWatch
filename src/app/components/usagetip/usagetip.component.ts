@@ -22,7 +22,7 @@ export class UsagetipComponent implements OnInit {
     if(this.tipData.type == "tip"){
       this.trustedURL = this.domSanitizer.bypassSecurityTrustResourceUrl(this.tipData.link);
     }
-    console.log(this.tipData);
+    // console.log(this.tipData);
   }
 
 }
