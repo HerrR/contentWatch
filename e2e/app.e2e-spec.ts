@@ -1,10 +1,10 @@
-import { ContentWatch2Page } from './app.po';
+import { ContentWatchPage } from './app.po';
 
-describe('content-watch2 App', function() {
-  let page: ContentWatch2Page;
+describe('content-watch App', function() {
+  let page: ContentWatchPage;
 
   beforeEach(() => {
-    page = new ContentWatch2Page();
+    page = new ContentWatchPage();
   });
 
   it('should display message saying app works', () => {
