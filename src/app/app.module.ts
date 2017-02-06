@@ -1,11 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http, RequestOptions } from '@angular/http'; //Http, RequestOptions for jwt workaround
 import { AngularFireModule } from 'angularfire2';
 import { routing } from './routing/app.routing';
 
-import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
 
 //Components
 import { AppComponent } from './app.component';
@@ -38,6 +38,10 @@ export const firebaseConfig = {
   storageBucket: "contentwatch-8421b.appspot.com",
 };
 
+//angular 2 jwt workaround
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp( new AuthConfig({}), http, options);
+}
 
 @NgModule({
   declarations: [
@@ -60,7 +64,15 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     routing
   ],
-  providers: [ContentService, AUTH_PROVIDERS],
+  //providers: [ContentService, AUTH_PROVIDERS],
+  providers: [
+    ContentService,
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [ Http, RequestOptions]
+    }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
