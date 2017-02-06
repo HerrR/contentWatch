@@ -1,6 +1,6 @@
-import { browser, element, by } from 'protractor/globals';
+import { browser, element, by } from 'protractor';
 
-export class ContentWatch2Page {
+export class ContentWatchPage {
   navigateTo() {
     return browser.get('/');
   }
