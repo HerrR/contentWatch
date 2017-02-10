@@ -47,13 +47,26 @@ export class ContentService {
       headers.append('x-channel-name', 'contentWatch');
 
       let categoryString = "";
+      let numCategories = 0; 
+      let categories = [];
 
-      let numCategories = params.usagetipsCategories.length; 
+      //If category has been selected, use that, else use all categories in databse (from firebase)
+      if(selectedCategories.length > 0){
+        numCategories = selectedCategories.length; 
+        categories = selectedCategories;
+      } else {
+        numCategories = params.usagetipsCategories.length; 
+        categories = params.usagetipsCategories;
+      }
+
+      //debugging
       console.log("Params in getUsageTips contentService", params);
       console.log("numCategories", numCategories);
-      
+      console.log("selected categories", selectedCategories);
+
+      //Build the search string for the categories
       for(let i = 0; i < numCategories; i++){
-        categoryString += '"'+params.usagetipsCategories[i]+'"';
+        categoryString += '"'+categories[i]+'"';
         if(i < numCategories-1){
           categoryString += ", ";
         }
@@ -62,15 +75,15 @@ export class ContentService {
       // console.log(categoryString);
 
       //category is collection in usagetips
-      let queryString:string = `tips?query={"tags":{"tenant":["${params.tenant}"],"lang":["${params.lang}"],"category":["${params.category}"],"model":["${params.model}"]},"collection": [${categoryString}],"params":{"page":${page}}}`;
-      
+      let queryString:string = `tips?query={"tags":{"tenant":["${params.tenant}"],"lang":["${params.lang}"],"category":["${params.category}"],"model":["${params.model}"],"collection": [${categoryString}]},"params":{"page":${page}}}`;
+      console.log("queryString:", queryString);
       // console.log(params.env['x-guid']);
       // console.log(params.env['ce']+'v2/contentengine/'+queryString);
       
       return this.http
                   .get(params.env['ce']+'v2/contentengine/'+queryString, {headers: headers})
                   .map((r: Response) => {
-
+                    console.log("the data:", r.json());
                     let data = r.json().data;
                     let numPages = r.json().totalPage;
                     let currentPage = r.json().currentPage;
@@ -80,7 +93,7 @@ export class ContentService {
                       "data": data, 
                       "pages": numPages, 
                       "currentPage": currentPage,
-                      "categories": params.usagetipsCategories};
+                      "categories": categories};
                   });
   }
 

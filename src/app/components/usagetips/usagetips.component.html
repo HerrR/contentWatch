@@ -11,6 +11,12 @@
     </div>
   </div>
   <div id="right-column">
+    
+    <div id="pageNumNavigation" *ngIf="numPages > 0">
+      <button (click)="previousPage()" [ngClass]="{disabled: pageNumber == 0}">Previous</button>
+        {{ pageNumber + 1 }} / {{ numPages }}
+      <button (click)="nextPage()" [ngClass]="{disabled: pageNumber == numPages-1}">Next</button>
+    </div>
 
     <div *ngFor="let tip of usageTips">
       <app-usagetip

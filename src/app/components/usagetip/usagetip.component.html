@@ -1,9 +1,12 @@
-<h2>{{ tipData.title }}</h2>
-<div *ngIf="tipData.type == 'tip'">
+<div *ngIf="tipData.type == 'tip'" class="videotip">
+  <h2>{{ tipData.description }}</h2>
   <iframe width="560" height="315" [src]="trustedURL" frameborder="0" allowfullscreen></iframe>
+  <div class="solution-id">{{ tipData.title }}</div>
+  <div class="solution-id">{{ tipData.uuid }}</div>
 </div>
 
-<div *ngIf="tipData.type == 'quick_tip'">
+<div *ngIf="tipData.type == 'quick_tip'" class="usagetip">
+  <h2>{{ tipData.title }}</h2>
   <div [innerHTML]="tipData.content"></div>
+  <div class="solution-id">{{ tipData.uuid }}</div>
 </div>
-

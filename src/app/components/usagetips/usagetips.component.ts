@@ -19,6 +19,7 @@ export class UsagetipsComponent implements OnInit {
     contentService.queryParamsObservable.subscribe(
       data => {
         this.onSearchEvent(data);
+        console.log(data);
       }
     );
   }
@@ -59,6 +60,7 @@ export class UsagetipsComponent implements OnInit {
     }
     this.pageNumber = 0;
     this.contentService.refreshPreviousQuery();
+
   }
 
   onSearchEvent(queryParams){
@@ -67,20 +69,19 @@ export class UsagetipsComponent implements OnInit {
     let searchParams = queryParams;
     let selectedCategories = [];
 
-    if(this.selectedCategories == null){
+    if(this.selectedCategories.length === 0 ){
       selectedCategories = queryParams["usagetipsCategories"];
     } else {
       selectedCategories = this.selectedCategories;
     }
-    
+
     this.usageTipCategories = queryParams["usagetipsCategories"];
-    
+
     this.contentService.getUsageTips(queryParams, selectedCategories, this.pageNumber)
       .subscribe(
         (result: any) => {
           this.pageNumber = result.currentPage;
           this.numPages = result.pages;
-          console.log(result);
           
           result.data.forEach(element => {
             let tip = JSON.parse(element);
@@ -88,6 +89,7 @@ export class UsagetipsComponent implements OnInit {
           });
         }
       );
+    
   }
 
   ngOnInit() {

@@ -26,5 +26,4 @@ export class UsagetipsCategoryComponent implements OnInit {
   ngOnInit() {
 
   }
-
 }
