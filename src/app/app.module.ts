@@ -1,11 +1,13 @@
+//Angular core modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, Http, RequestOptions } from '@angular/http'; //Http, RequestOptions for jwt workaround
-import { AngularFireModule } from 'angularfire2';
 import { routing } from './routing/app.routing';
 
+//Libraries
 import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
+import { AngularFireModule } from 'angularfire2';
 
 //Components
 import { AppComponent } from './app.component';
