@@ -2,8 +2,22 @@
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.30.
 
+##Installation
+
+Install nodejs current (7.5.0)
+(If you got earlier builds of ContentWatch, please delete the "node_modules" folder and run the below commands.
+
+If you have earlier versions of angular cli: 
+Run `(sudo) npm uninstall -g angular-cli`
+Run `(sudo) npm cache clean`
+
+For all:
+Run `(sudo) npm install -g @angular/cli`
+Run `(sudo) npm install`
+
 ## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+Run `ng serve` or `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
