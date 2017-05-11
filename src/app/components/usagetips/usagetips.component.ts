@@ -19,7 +19,6 @@ export class UsagetipsComponent implements OnInit {
     contentService.queryParamsObservable.subscribe(
       data => {
         this.onSearchEvent(data);
-        console.log(data);
       }
     );
   }
@@ -76,16 +75,16 @@ export class UsagetipsComponent implements OnInit {
     }
 
     this.usageTipCategories = queryParams["usagetipsCategories"];
-
     this.contentService.getUsageTips(queryParams, selectedCategories, this.pageNumber)
       .subscribe(
         (result: any) => {
           this.pageNumber = result.currentPage;
           this.numPages = result.pages;
-          
+          console.log(result);
           result.data.forEach(element => {
-            let tip = JSON.parse(element);
+            let tip = JSON.parse(element.entry);
             this.usageTips.push(tip);
+            
           });
         }
       );

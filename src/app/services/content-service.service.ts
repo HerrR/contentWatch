@@ -74,15 +74,13 @@ export class ContentService {
       }
 
       //reminder: category is called 'collection' in usagetips
-      let queryString:string = `tips?query={"tags":{"tenant":["${params.tenant}"],"lang":["${params.lang}"],"category":["${params.category}"],"model":["${params.model}"],"collection": [${categoryString}]},"params":{"page":${page}}}`;
-      
+      let queryString:string = `tips?query={"tags":{"tenant":["${params.tenant}"],"lang":["${params.lang}"],"category":["${params.category}"],"model":["${params.model}"], "os": [${params.os}],"collection": [${categoryString}]},"params":{"page":${page}}}`;
       return this.http
                   .get(params.env['ce']+'v2/contentengine/'+queryString, {headers: headers})
                   .map((r: Response) => {
                     let data = r.json().data;
                     let numPages = r.json().totalPage;
                     let currentPage = r.json().currentPage;
-
                     return {
                       "data": data, 
                       "pages": numPages, 

@@ -7,11 +7,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class UsagetipComponent implements OnInit {
   @Input() tipData;
+  
   trustedURL;
   constructor(private domSanitizer: DomSanitizer) {
 
   }
-
   // trustedURL(){
   //   console.log(this.tipData.link);
     
@@ -19,6 +19,7 @@ export class UsagetipComponent implements OnInit {
   // }
 
   ngOnInit() {
+    
     if(this.tipData.type == "tip"){
       this.trustedURL = this.domSanitizer.bypassSecurityTrustResourceUrl(this.tipData.link);
     }

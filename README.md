@@ -4,15 +4,20 @@ This project was generated with [angular-cli](https://github.com/angular/angular
 
 ##Installation
 
-Install nodejs current (7.5.0)
+Install nodejs current (7.5.0):
+
 (If you got earlier builds of ContentWatch, please delete the "node_modules" folder and run the below commands.
 
 If you have earlier versions of angular cli: 
+
 Run `(sudo) npm uninstall -g angular-cli`
+
 Run `(sudo) npm cache clean`
 
 For all:
+
 Run `(sudo) npm install -g @angular/cli`
+
 Run `(sudo) npm install`
 
 ## Development server
